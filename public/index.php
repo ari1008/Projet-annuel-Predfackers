@@ -23,6 +23,8 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/connect.php";
 }elseif ($page === 'register'){
     require ROOT_FOLDER . "/pages/post/registration.php";
+}elseif ($page === 'verification'){
+    require ROOT_FOLDER . "/pages/post/verification.php";
 }
 $content = ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/default.php';

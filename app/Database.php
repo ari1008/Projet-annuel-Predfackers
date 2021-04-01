@@ -41,44 +41,49 @@ class Database{
         return $data;
     }
 
-    public function select($table, $tab, $everything=0, $whereTab=null,$operator=null,$one = null){
-        $lengthTab= count($tab);
+    public function select($table, $tab, $everything=0, $whereTab=null,$operator=null,$one = null)
+    {
+        $lengthTab = count($tab);
         require ROOT . '/config/config.php';
-        if(1==$everything){
+        if (1 == $everything) {
             $q = 'SELECT * FROM ' . $table;
-        }else{
+        } else {
             $q = 'SELECT ';
-            for ($x=0;$x<$lengthTab-1;$x++){
+            for ($x = 0; $x < $lengthTab - 1; $x++) {
                 $q .= $tab[$x] . ', ';
             }
-            $q.= $tab[$x] . ' FROM ' . $table;
-            if (!is_null($whereTab)){
+            $q .= $tab[$x] . ' FROM ' . $table;
+            if (!is_null($whereTab)) {
                 $lenghtWhere = count($whereTab);
                 $keyWhere = array_keys($whereTab);
                 $where = ' WHERE ';
-                for ($x=0;$x<$lenghtWhere-1;$x++){
+                for ($x = 0; $x < $lenghtWhere - 1; $x++) {
                     $where .= $keyWhere[$x] . "=:" . $keyWhere[$x] . ' ' . $operator[$x] . ' ';
                 }
                 $where .= $keyWhere[$x] . "=:" . $keyWhere[$x] . ' ';
                 $q .= $where;
-                $stmt= $this->pdo->prepare($q);
-                $stmt->execute($whereTab);
-                if (!is_null($one)){
-                    $data = $stmt->fetchAll();
-                    return $data;
-                }else{
-                    $data = $stmt->fetch();
-                    return $data;
-                }
+                var_dump($q);
+            }
+            //$stmt= $this->pdo->prepare($q);
+            //$stmt->execute($whereTab);
+            /*if (!is_null($one)){
+                $data = $stmt->fetchAll();
+                return $data;
+            }else{
+                $data = $stmt->fetch();
+                return $data;
             }
         }
-        $stmt = $this->pdo->query($q);
-        if (!is_null($one)){
-            $data = $stmt->fetchAll();
-            return $data;
-        }else{
-            $data = $stmt->fetch();
-            return $data;
+    }
+    $stmt = $this->pdo->query($q);
+    if (!is_null($one)){
+        $data = $stmt->fetchAll();
+        return $data;
+    }else{
+        $data = $stmt->fetch();
+        return $data;
+    }*/
+            return 0;
         }
     }
 
