@@ -14,7 +14,19 @@ class Auth{
          $this->email=$email;
          $this->database=$database;
          if ($username!=Null){
-             $this->registration($password);
+             $tab = [ "email"=> $this->email,
+                 "username" => $this->username
+             ];
+             $operator[]="OR";
+             $this->database->getPdo();
+             $test = $this->database->selectOneAll("USER", $tab, $operator);
+             if($test == false){
+                 $this->registration($password);
+             }else{
+                 header('location: index.php');
+                 exit();
+             }
+
          }else{
              $this->identification($password);
          }
@@ -25,20 +37,36 @@ class Auth{
          $password = password_hash($password,PASSWORD_DEFAULT);
          $tab = [ "email"=> $this->email,
              "username"=> $this->username,
-             "password"=> $password
+             "password"=> $password,
+             "type"=> "1"
          ];
          $this->database->getPdo();
          $test = $this->database->insert("USER",$tab);
+         return $test;
      }
 
      protected function identification ($password){
-         $password = password_hash($password,PASSWORD_DEFAULT);
          $tab = [ "email"=> $this->email,
-             "password"=> $password
          ];
          $this->database->getPdo();
-         //$this->database->insert("USER",$tab);
-
+         $test = $this->database->selectOneAll("USER", $tab);
+         if($test != false){
+             if(password_verify($password,$test["password"])){
+                 switch ($test["type"]){
+                    case  0:
+                        $_SESSION['id'] = $test['id_user'];
+                        $_SESSION['type'] = 0;
+                        header('location: admin.php ');
+                        exit();
+                     case 1:
+                         $_SESSION['id'] = $test['id_user'];
+                         $_SESSION['type'] = 1;
+                         header('location: client.php');
+                         exit();
+                 }
+             }
+         }
+         return $test;
      }
 
 

@@ -28,11 +28,7 @@ class Form{
     }
 
     public static  function button($name){
-        $contentForm = '  <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                          </div>
-                          <button type="submit" class="btn btn-primary">' . $name . '</button>';
+        $contentForm = '  <button type="submit" class="btn btn-primary">' . $name . '</button>';
         echo $contentForm;
     }
 
@@ -52,5 +48,39 @@ class Form{
                             </div>
                         </div>';
         echo $contentForm;
+    }
+
+    public static function texteAera($name,$description,$id){
+        $contentForm = '<div class="row gy-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="texte" class="col-form-label">' . $name .'</label>
+                            </div>
+               <label for="exampleFormControlTextarea1" class="form-label">'.$description.'</label>
+               <textarea class="form-control" id="'.$id .'" name="'.$id.'" rows="3" placeholder="' . $name . '"></textarea>
+               </div>';
+        return $contentForm;
+    }
+
+    public static function inputFile($name,$description,$id){
+        $contentForm = '<div class="row gy-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="texte" class="col-form-label">' . $name .'</label>
+                            </div>
+                            <div class="mb-3">
+                            <label for="formFile" class="form-label">'.$description.'</label>
+                            <input class="form-control" type="file" id="'.$id.'" name="'.$id.'">
+                        </div>';
+        return $contentForm;
+    }
+
+    public static function number($name,$description,$id, $value){
+        $contentForm = '<div class="form-group row">
+                             <label for="texte" class="col-form-label">' . $name .'</label>
+                            <label for="example-number-input" class="col-2 col-form-label">' . $description .'</label>
+                            <div class="col-10">
+                                <input class="form-control" type="number" value="'.$value.'" id="'. $id.'"  name="'.$id.'">
+                            </div>
+                        </div>';
+        return $contentForm;
     }
 }
