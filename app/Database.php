@@ -13,13 +13,13 @@ class Database{
 
     public function __construct($dbname='predfackers',$db_user='predfackers',$db_pass='predfackers'){
         $this->dbname=$dbname;
-        $this->db_user=$dbname;
+        $this->db_user=$db_user;
         $this->db_pass=$db_pass;
     }
 
     public function  getPdo(){
         if($this->pdo === null){
-            $pdo = new PDO('mysql:host=' . self::HOST . ':' . self::PORT . ';dbname='. $this->db_name, ''. $this->db_user .'', '' . $this->db_pass .'' );
+            $pdo = new PDO('mysql:host=' . self::HOST . ':' . self::PORT . ';dbname='. $this->dbname, ''. $this->db_user .'', '' . $this->db_pass .'' );
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }
@@ -27,64 +27,31 @@ class Database{
     }
 
     public function  insert($table, $tab){
+        var_dump($tab);
+        $x =0;
         $lenght = count($tab);
         $tabkey =array_keys($tab);
-        $q = "INSERT INTO " . $table. "(";
-        for($x=0;$x<$lenght-1;$x++){
-            $q.= $tabkey[$x] . ",";
-
+        $sql = "INSERT INTO " . $table . " ( ";
+        while ($x<$lenght-1){
+            $sql = $sql ." ". $tabkey[$x] . ", ";
+            $x++;
         }
-        $q .=$tabkey[$x] .") VALUES('";
-        $virgule = implode("','", $tab);
-        $q.= $virgule . "')";
-        $data = $this->pdo->query($q);
-        return $data;
+        $sql =$sql . " " .  $tabkey[$x] ;
+        $x=0;
+        $sql = $sql . " ) VALUES (";
+        while ($x<$lenght-1){
+           $sql = $sql . " :" . $tabkey[$x] . ", " ;
+           $x++;
+        }
+        $sql =$sql . " :" .  $tabkey[$x]  . " )";
+        $data = $this->pdo->prepare($sql);
+        $result=$data->execute($tab);
+         var_dump($result);
+        return $result;
     }
 
-    public function select($table, $tab, $everything=0, $whereTab=null,$operator=null,$one = null)
-    {
-        $lengthTab = count($tab);
-        require ROOT . '/config/config.php';
-        if (1 == $everything) {
-            $q = 'SELECT * FROM ' . $table;
-        } else {
-            $q = 'SELECT ';
-            for ($x = 0; $x < $lengthTab - 1; $x++) {
-                $q .= $tab[$x] . ', ';
-            }
-            $q .= $tab[$x] . ' FROM ' . $table;
-            if (!is_null($whereTab)) {
-                $lenghtWhere = count($whereTab);
-                $keyWhere = array_keys($whereTab);
-                $where = ' WHERE ';
-                for ($x = 0; $x < $lenghtWhere - 1; $x++) {
-                    $where .= $keyWhere[$x] . "=:" . $keyWhere[$x] . ' ' . $operator[$x] . ' ';
-                }
-                $where .= $keyWhere[$x] . "=:" . $keyWhere[$x] . ' ';
-                $q .= $where;
-                var_dump($q);
-            }
-            //$stmt= $this->pdo->prepare($q);
-            //$stmt->execute($whereTab);
-            /*if (!is_null($one)){
-                $data = $stmt->fetchAll();
-                return $data;
-            }else{
-                $data = $stmt->fetch();
-                return $data;
-            }
-        }
-    }
-    $stmt = $this->pdo->query($q);
-    if (!is_null($one)){
-        $data = $stmt->fetchAll();
-        return $data;
-    }else{
-        $data = $stmt->fetch();
-        return $data;
-    }*/
-            return 0;
-        }
+    public function select(){
+        
     }
 
     function Delete($table, $one=0,$where=null){

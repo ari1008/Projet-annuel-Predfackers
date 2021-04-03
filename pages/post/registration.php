@@ -4,8 +4,10 @@ $descriptionUsername = gettext("Votre username");
 $descriptionPassword = gettext("Votre password doit être entre 8 et 20 characters de long");
 use \APP\Bootstrap\Form;
 $connect = new Form();
+
+
 ?>
-<form  method="post" class="form-group">
+<form  method="post" action=?p=verification class="form-group">
     <div class="col-3">
         <?=$connect::email(gettext("Email"),$descriptionEmail,"email");?>
         <?=$connect::texte(gettext("Identifiant"),$descriptionUsername,"identifiant");?>
