@@ -1,16 +1,20 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-use \APP\Bootstrap\Valid;
-$mark = new Valid();
+use \APP\Bootstrap\Form;
+use APP\Table\Mark;
+$formul= new Form();
+$id_mark = $_GET["mark"];
+$mark =  new Mark();
+$mark->getPdo();
+$results = $mark->ViewMark($id_mark);
 $descriptionMark = gettext("Vous pouvez modifiez votre marque");
 ?>
 
 <div class="container overflow-hidden">
-    <?php echo 1; ?>
     <form  method="post" action=?p=verificationModifyMark enctype="multipart/form-data" class="form-group">
-        <?= $mark::texteValidate(gettext("Nom"),$descriptionMark,"name");?>
-        <? $mark::button(gettext("Ajoutez"));?>
+        <?= $formul::texteValidate($results['name'],$descriptionMark,"name");?>
+        <?= $formul::button(gettext("Ajoutez"));?>
     </form>
 </div>
 

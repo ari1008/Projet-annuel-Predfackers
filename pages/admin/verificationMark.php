@@ -25,6 +25,7 @@
                 echo "L'envoi a bien été effectué !";
                 $results = $mark->addMark($_POST["Nom"],$name);
                 header("location: admin.php?p=mark");
+                exit();
             }
         }
     }

@@ -5,7 +5,7 @@ $descriptionName = gettext("Il faut mettre le nom de la catégorie");
 $descriptionPhoto = gettext("Mettez la photo de la catégorie");
 ?>
 
-<form  method="post" action=?p=verificationProduct enctype="multipart/form-data" class="form-group">
+<form  method="post" action=?p=verificationCategory enctype="multipart/form-data" class="form-group">
     <div class="col-3">
         <?=$connect::texte(gettext("Nom"),$descriptionName,"Nom");?>
         <?=$connect::inputFile(gettext("Photo de la catégorie"),$descriptionPhoto, "photo");?>

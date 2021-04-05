@@ -43,7 +43,10 @@ if ($page === 'home') {
     require  ROOT_FOLDER . "/pages/admin/deleteMark.php";
 }elseif ($page === "modifyMark"){
     require  ROOT_FOLDER . "/pages/admin/modifyMark.php";
-    echo 1;
+}elseif ($page === "verificationProduct"){
+    require ROOT_FOLDER . "/pages/admin/verificationProduct.php";
+}elseif ($page === "verificationCategory"){
+    require ROOT_FOLDER . "/pages/admin/verificationCategory.php";
 }
 $content = ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/admin.php';
