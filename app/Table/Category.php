@@ -1,16 +1,22 @@
 <?php
-
-
 namespace APP\Table;
 use APP\Database;
 use \PDO;
 
 class Category extends Database {
-    public function ViewUserAll(){
-        $q = "SELECT id_category, name, photo FROM USER ORDER BY id_category";
+    public function ViewCategoryAll(){
+        $q = "SELECT id_category, name, photo FROM CATEGORY ORDER BY id_category";
         $stmt = $this->pdo->query($q);
-        $user = $stmt->fetchAll();
-        return $user;
+        $category = $stmt->fetchAll();
+        return $category;
+    }
+
+    public function ViewCategory($id_category){
+        $q = "SELECT id_category, name, photo FROM CATEGORY WHERE id_category=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_category]);
+        $category = $stmt->fetch();
+        return $category;
     }
 
 }

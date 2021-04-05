@@ -71,12 +71,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="?p=product">Produits</a>
             </li>
+            <li>
+                <a class="nav-item">
+                    <a class="nav-link" href="?p=mark">Marques</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="?p=deco">deconnexion</a>
             </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pannier</a>
-                </li>
+            <li>
                 <a class="nav-item">
                     <a class="nav-link" href="#">F A Q</a>
                     </li>

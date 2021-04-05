@@ -4,6 +4,7 @@ $user =  new User();
 $user->getPdo();
 $results = $user->ViewUserAll();
 ?>
+<a href="?p=userAdd" class="btn btn-primary btn-lg"  role="button" ><?php echo gettext("Ajoutez des Utilisateurs admin");?></a>
 <div class="container overflow-hidden">
 <table class="table table-striped table-bordered">
     <thead>
