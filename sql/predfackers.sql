@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : sam. 03 avr. 2021 à 18:01
+-- Généré le : mar. 06 avr. 2021 à 19:49
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.15
 
@@ -93,8 +93,9 @@ CREATE TABLE `CALCULATEDPRICE` (
   `id_calculatedprice` int NOT NULL,
   `category` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  `mark` varchar(100) NOT NULL,
-  `price` int NOT NULL
+  `mark` int NOT NULL,
+  `price` int NOT NULL,
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -109,6 +110,13 @@ CREATE TABLE `CATEGORY` (
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Déchargement des données de la table `CATEGORY`
+--
+
+INSERT INTO `CATEGORY` (`id_category`, `name`, `photo`) VALUES
+(2, 'Smartphone', '2smartphone.png');
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +128,13 @@ CREATE TABLE `MARK` (
   `name` varchar(50) NOT NULL,
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `MARK`
+--
+
+INSERT INTO `MARK` (`id_mark`, `name`, `photo`) VALUES
+(3, 'Apple', '4apple.png');
 
 -- --------------------------------------------------------
 
@@ -302,7 +317,9 @@ ALTER TABLE `BUY`
 -- Index pour la table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
-  ADD KEY `category` (`category`);
+  ADD PRIMARY KEY (`id_calculatedprice`),
+  ADD KEY `category` (`category`),
+  ADD KEY `mark` (`mark`);
 
 --
 -- Index pour la table `CATEGORY`
@@ -405,16 +422,22 @@ ALTER TABLE `ASSOCIATION`
   MODIFY `id_association` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `CALCULATEDPRICE`
+--
+ALTER TABLE `CALCULATEDPRICE`
+  MODIFY `id_calculatedprice` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `CATEGORY`
 --
 ALTER TABLE `CATEGORY`
-  MODIFY `id_category` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `MARK`
 --
 ALTER TABLE `MARK`
-  MODIFY `id_mark` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mark` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `PAYMENT`
@@ -491,7 +514,8 @@ ALTER TABLE `BUY`
 -- Contraintes pour la table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
-  ADD CONSTRAINT `CALCULATEDPRICE_ibfk_1` FOREIGN KEY (`category`) REFERENCES `CATEGORY` (`id_category`);
+  ADD CONSTRAINT `CALCULATEDPRICE_ibfk_1` FOREIGN KEY (`category`) REFERENCES `CATEGORY` (`id_category`),
+  ADD CONSTRAINT `CALCULATEDPRICE_ibfk_2` FOREIGN KEY (`mark`) REFERENCES `MARK` (`id_mark`);
 
 --
 -- Contraintes pour la table `PAYMENT`

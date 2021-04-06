@@ -10,9 +10,7 @@ class Mark extends Database{
     public function ViewMarkAll(){
         $q = "SELECT id_mark AS id, name , photo FROM MARK ORDER BY id_mark";
         $stmt = $this->pdo->query($q);
-        echo 1;
         $markAll = $stmt->fetchAll();
-        var_dump($markAll);
         return $markAll;
     }
 
@@ -35,6 +33,13 @@ class Mark extends Database{
         $sql = "DELETE FROM MARK WHERE id_mark=?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id_mark]);
+    }
+
+    public function markId(){
+        $sql = "SELECT id_mark AS id, name FROM MARK ORDER BY id_mark";
+        $stmt = $this->pdo->query($sql);
+        $mark = $stmt->fetchAll();
+        return $mark;
     }
 
 

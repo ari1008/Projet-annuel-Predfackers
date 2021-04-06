@@ -19,4 +19,11 @@ class Category extends Database {
         return $category;
     }
 
+    public function categoryID(){
+        $q = "SELECT id_category AS id, name FROM CATEGORY ORDER BY id_category";
+        $stmt = $this->pdo->query($q);
+        $category = $stmt->fetchAll();
+        return $category;
+    }
+
 }

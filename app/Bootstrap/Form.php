@@ -85,10 +85,12 @@ class Form{
     }
 
     public static function select($tabName,$description,$id ){
+        $length = count($tabName);
         $contentForm = '<select class="form-select" aria-label="Default select example" name="'.$id.'">
                             <option selected>'. $description . '</option>';
-        foreach ($tabName as $key => $value) {
-            '<option value="'.$value['id'].'">'.$value["name"].'</option>';
+        #var_dump($tabName);
+        foreach ($tabName as $key => $value){
+           $contentForm = $contentForm . ' <option value="'.$value["id"].'">'.$value["name"].'</option>';
         }
         $contentForm = $contentForm .   '</select>';
         return $contentForm;
