@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 06, 2021 at 09:04 PM
+-- Generation Time: Apr 07, 2021 at 08:41 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -60,6 +60,30 @@ CREATE TABLE `CALCULATEDPRICE` (
   `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `CALCULATEDPRICE`
+--
+
+INSERT INTO `CALCULATEDPRICE` (`id_calculatedprice`, `category`, `name`, `mark`, `price`, `photo`) VALUES
+(2, 2, 'Iphone X', 3, 350, 'IphoneX.jpg'),
+(3, 5, 'Xiaomi mi notebook pro', 12, 900, 'Xiaomi-notebook-pro.jpg'),
+(4, 3, 'Samsung galaxy buds', 8, 90, 'Samsung-galaxy-buds.jpg'),
+(5, 4, 'Apple Watch (Series 4)', 3, 233, 'Apple-Watch(Series 4).jpg'),
+(6, 6, 'PS4 Pro', 9, 250, 'sony-ps4-pro.jpg'),
+(7, 8, 'Sony BRAVIA 55XH9505', 9, 999, 'Sony-BRAVIA-55XH9505.jpg'),
+(8, 2, 'Sony Ericsson Xperia Play', 10, 90, 'Xperia-Play.jpg'),
+(9, 2, 'Vivo X51', 11, 550, 'vivo-X51.jpg'),
+(10, 5, 'HP Pavilion 15-eg0003nf', 6, 713, 'Pavilion-15-eg0003nf.jpg'),
+(11, 2, 'Google Pixel 5', 5, 629, 'Pixel5.jpg'),
+(12, 3, 'Huawei Freebuds Pro', 7, 123, 'Freebuds-pro.jpg'),
+(13, 8, 'Xiaomi Mi Tv 4S', 12, 389, 'MI-Tv-4S.jpg'),
+(14, 7, 'Herman Miller Aeron', 13, 1870, 'Herman-Miller-Aeron.jpg'),
+(15, 6, 'Sony PSP 3004', 9, 102, 'PSP-3004.jpg'),
+(16, 4, 'Samsung Galaxy Watch3', 8, 257, 'Galaxy-Watch3.jpg'),
+(17, 4, 'HUAWEI WATCH GT 2 Pro', 7, 210, 'WATCH-GT-2-Pro.jpg'),
+(18, 7, 'Noblechairs Epic', 14, 362, 'Noblechairs-Epic.jpg'),
+(19, 7, 'QUERSUS EVOS 301', 15, 324, 'quersus-evos301.png');
+
 -- --------------------------------------------------------
 
 --
@@ -110,7 +134,10 @@ INSERT INTO `MARK` (`id_mark`, `name`, `photo`) VALUES
 (9, 'Sony', 'iconsony.png'),
 (10, 'Sony Ericsson', 'iconsonyericsson.png'),
 (11, 'Vivo', 'iconvivo.png'),
-(12, 'Xiaomi', 'iconxiaomi.png');
+(12, 'Xiaomi', 'iconxiaomi.png'),
+(13, 'Herman Miller', 'Herman-Miller.jpg'),
+(14, 'Noblechairs', 'Logo-Noblechairs.svg'),
+(15, 'Quersus', 'quersuslogo.png');
 
 -- --------------------------------------------------------
 
@@ -317,7 +344,7 @@ ALTER TABLE `ADDRESS`
 -- AUTO_INCREMENT for table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
-  MODIFY `id_calculatedprice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_calculatedprice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `CATEGORY`
@@ -329,7 +356,7 @@ ALTER TABLE `CATEGORY`
 -- AUTO_INCREMENT for table `MARK`
 --
 ALTER TABLE `MARK`
-  MODIFY `id_mark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_mark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `PAYMENT`
