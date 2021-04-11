@@ -1,9 +1,6 @@
 <?php
 use APP\Autoloader;
 
-
-
-
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
 require ROOT_FOLDER.'/app/Autoloader.php';
 Autoloader::register();

@@ -5,7 +5,7 @@ use \PDO;
 
 class Database{
     const PORT = 3306;
-    const HOST = "11.5.0.8";
+    const HOST = "12.5.0.8";
     private $dbname;
     private $db_user;
     private $db_pass;
@@ -27,7 +27,6 @@ class Database{
     }
 
     public function  insert($table, $tab){
-        var_dump($tab);
         $x =0;
         $lenght = count($tab);
         $tabkey =array_keys($tab);
@@ -44,14 +43,32 @@ class Database{
            $x++;
         }
         $sql =$sql . " :" .  $tabkey[$x]  . " )";
+        var_dump($sql);
         $data = $this->pdo->prepare($sql);
         $result=$data->execute($tab);
-         var_dump($result);
         return $result;
     }
 
+<<<<<<< HEAD
     public function select(){
 
+=======
+    public function selectOneAll($table, $tab, $operator= null){
+        $x=0;
+        $lenght = count($tab);
+        $tabkey =array_keys($tab);
+        $lenghtOperator = count($operator);
+        $sql = "Select * FROM " . $table . " WHERE ";
+        while($x<$lenght-1) {
+            $sql = $sql . $tabkey[$x] . "=:" . $tabkey[$x] . " " . $operator[$x] . " ";
+            $x++;
+        }
+        $sql =$sql . $tabkey[$x]. "=:" . $tabkey[$x] ;
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($tab);
+        $result=$stmt->fetch();
+        return $result;
+>>>>>>> main
     }
 
     function Delete($table, $one=0,$where=null){
