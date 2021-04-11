@@ -51,7 +51,7 @@ class Database{
     }
 
     public function select(){
-        
+
     }
 
     function Delete($table, $one=0,$where=null){
