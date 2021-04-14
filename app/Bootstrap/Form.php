@@ -10,7 +10,7 @@ class Form{
     public static function email($name,$description, $id){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">'.$name .'</label>
-                            <input type="email" class="form-control" id="email" name="'.$id.'" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="email" name="'.$id.'" aria-describedby="emailHelp" placeholder="' . $name . '">
                             <div id="emailHelp" class="form-text">'.$description.'</div>
                         </div>';
         echo $contentForm;
@@ -20,7 +20,7 @@ class Form{
     public static function password($name,$description,$id){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">'.$name .'</label>
-                            <input type="password" class="form-control" id="' . $id . '" name="'.$id.'" aria-describedby="emailHelp">
+                            <input type="password" class="form-control" id="' . $id . '" name="'.$id.'" aria-describedby="emailHelp" placeholder="' . $name . '">
                             <div id="passwordHelp" class="form-text">'.$description .'</div>
                         </div>';
         echo $contentForm;
@@ -33,19 +33,12 @@ class Form{
     }
 
     public static function texte($name,$description,$id){
-        $contentForm = '<div class="row gy-3 align-items-center">
-                            <div class="col-auto">
+        $contentForm = '<div class="mb-3 align-items-center">
                                 <label for="texte" class="col-form-label">' . $name .'</label>
-                            </div>
-                            <div class="col-auto">
                                 <input type="texte" id="' . $id .'"  name="'.$id.'" class="form-control" aria-describedby="texteHelpInline" placeholder="' . $name . '">
-                            </div>
-                            <div class="col-auto">
                                 <span id="texteHelpInline" class="form-text">
                                     ' . $description . '
                                 </span>
-                                
-                            </div>
                         </div>';
         echo $contentForm;
     }
