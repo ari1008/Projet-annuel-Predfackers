@@ -49,10 +49,7 @@ class Database{
         return $result;
     }
 
-<<<<<<< HEAD
-    public function select(){
 
-=======
     public function selectOneAll($table, $tab, $operator= null){
         $x=0;
         $lenght = count($tab);
@@ -68,7 +65,6 @@ class Database{
         $stmt->execute($tab);
         $result=$stmt->fetch();
         return $result;
->>>>>>> main
     }
 
     function Delete($table, $one=0,$where=null){
