@@ -4,7 +4,7 @@ $descriptionPassword = gettext("Votre password doit être entre 8 et 20 characte
 use \APP\Bootstrap\Form;
 $connect = new Form();
 ?>
-<div class="container>
+<div class="container">
     <div class="row">
         <form method="post"  action=?p=verification class="col-md-6 offset-md-3">
             <div class="border px-4 py-3">

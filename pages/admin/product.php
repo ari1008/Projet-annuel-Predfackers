@@ -3,7 +3,6 @@ use APP\Table\CaculatedPrice;
 $calulated =  new CaculatedPrice();
 $calulated->getPdo();
 $results = $calulated->viewCaculatedPriceAll();
-var_dump($results);
 ?>
 <a href="?p=productAdd" class="btn btn-primary btn-lg"  role="button" ><?php echo gettext("Ajoutez des Produits");?></a>
 <div class="container overflow-hidden">

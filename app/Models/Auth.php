@@ -46,23 +46,23 @@ class Auth{
      }
 
      protected function identification ($password){
-         $tab = [ "email"=> $this->email,
-         ];
          $this->database->getPdo();
-         $test = $this->database->selectOneAll("USER", $tab);
+         $test = $this->database->SelectUser($this->email);
+         echo  $test['id_user'];
          if($test != false){
              if(password_verify($password,$test["password"])){
                  switch ($test["type"]){
                     case  0:
                         $_SESSION['id'] = $test['id_user'];
-                        $_SESSION['type'] = 0;
+                        $_SESSION['type'] = is_int(0);
                         header('location: admin.php ');
                         exit();
                      case 1:
                          $_SESSION['id'] = $test['id_user'];
-                         $_SESSION['type'] = 1;
+                         $_SESSION['type'] = is_int(1) ;
                          header('location: client.php');
                          exit();
+
                  }
              }
          }

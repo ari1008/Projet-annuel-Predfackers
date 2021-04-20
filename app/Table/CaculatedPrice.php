@@ -27,4 +27,20 @@ class CaculatedPrice extends Database {
         return $calculatedPrice;
 
     }
+
+    public function viewMarkAVG($id_mark){
+        $sql = "SELECT AVG(price) AS priceMark FROM CALCULATEDPRICE WHERE mark=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_mark]);
+        $calculatedPrice = $stmt->fetch();
+        return $calculatedPrice;
+    }
+
+    public function viewCategoryAVG($id_category){
+        $sql = "SELECT AVG(price) AS priceCat FROM CALCULATEDPRICE WHERE category=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_category]);
+        $calculatedPrice = $stmt->fetch();
+        return $calculatedPrice;
+    }
 }

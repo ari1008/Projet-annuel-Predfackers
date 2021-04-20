@@ -1,9 +1,7 @@
 <?php
-
-
 namespace APP\Table;
-use \PDO;
 use APP\Database;
+use \PDO;
 
 class Product extends Database{
 

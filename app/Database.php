@@ -48,8 +48,6 @@ class Database{
         $result=$data->execute($tab);
         return $result;
     }
-
-
     public function selectOneAll($table, $tab, $operator= null){
         $x=0;
         $lenght = count($tab);
@@ -65,6 +63,14 @@ class Database{
         $stmt->execute($tab);
         $result=$stmt->fetch();
         return $result;
+    }
+
+    public function SelectUser($email){
+        $q = "SELECT id_user, type, password FROM USER WHERE email=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+        return $user;
     }
 
     function Delete($table, $one=0,$where=null){
