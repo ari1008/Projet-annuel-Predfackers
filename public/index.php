@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use APP\Autoloader;
 
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
@@ -18,8 +18,6 @@ ob_start();
 if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/home.php";
 }elseif ($page === 'connect'){
-    session_start();
-
     require ROOT_FOLDER . "/pages/post/connect.php";
 }elseif ($page === 'register'){
     require ROOT_FOLDER . "/pages/post/registration.php";

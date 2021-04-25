@@ -1,7 +1,6 @@
 <?php
-session_start();
 use APP\Autoloader;
-
+session_start();
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
 require ROOT_FOLDER . '/app/Autoloader.php';
 Autoloader::register();
@@ -24,6 +23,10 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/client/addProduct.php";
 }elseif ($page === 'verificationProduct') {
     require ROOT_FOLDER . "/pages/client/verificationProduct.php";
+}elseif ($page == "card"){
+    require ROOT_FOLDER .  "/pages/client/card.php";
+}elseif ($page == "validateProduct"){
+    require ROOT_FOLDER .  "/pages/client/validateProduct.php";
 }
 $content = ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';

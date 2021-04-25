@@ -35,4 +35,16 @@ class Product extends Database{
         return $product;
     }
 
+    public function LastIdProduct(){
+        $sql=  "SELECT MAX(id_product) FROM PRODUCT";
+        $stmt = $this->pdo->query($sql);
+        $product = $stmt->fetch();
+        return $product;
+    }
+    public function delete($id){
+        $sql = "DELETE FROM PRODUCT WHERE ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id]);
+    }
+
 }

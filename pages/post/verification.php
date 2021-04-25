@@ -11,6 +11,7 @@ if(empty($_POST["email"])!= TRUE AND empty($_POST["password"])!= TRUE AND empty(
     $idenfication = new Auth($_POST["email"],$_POST["password"],$db = new Database());
 
 }
+var_dump($_SESSION);
 
 ?>
 </div>

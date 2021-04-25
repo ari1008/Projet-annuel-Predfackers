@@ -1,5 +1,5 @@
 <div class="container">
 <?php
-var_dump($_SESSION);
+echo "Ce sera la page profil";
 ?>
     </div class="container">

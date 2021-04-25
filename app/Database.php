@@ -43,7 +43,6 @@ class Database{
            $x++;
         }
         $sql =$sql . " :" .  $tabkey[$x]  . " )";
-        var_dump($sql);
         $data = $this->pdo->prepare($sql);
         $result=$data->execute($tab);
         return $result;
