@@ -13,7 +13,7 @@ if (isset($_GET['p'])) {
 } else {
     $page = 'home';
 }
-
+$content = "";
 ob_start();
 if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/home.php";
@@ -23,6 +23,9 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/registration.php";
 }elseif ($page === 'verification'){
     require ROOT_FOLDER . "/pages/post/verification.php";
+}elseif ($page === 'testPdf'){
+
+    require ROOT_FOLDER . "/pages/post/testPdf.php";
 }
-$content = ob_get_clean();
+$content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/default.php';

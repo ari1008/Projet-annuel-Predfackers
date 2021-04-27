@@ -84,6 +84,7 @@ class Verification{
                 }
             }
         }
+        chmod($dossierDestination, 0777);
         return($retour);
     }
 

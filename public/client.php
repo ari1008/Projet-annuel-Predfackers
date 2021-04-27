@@ -11,7 +11,7 @@ if (isset($_GET['p'])) {
 } else {
     $page = 'home';
 }
-
+$content = "";
 ob_start();
 if ($page === 'home') {
     require ROOT_FOLDER . "/pages/client/home.php";
@@ -27,6 +27,8 @@ if ($page === 'home') {
     require ROOT_FOLDER .  "/pages/client/card.php";
 }elseif ($page == "validateProduct"){
     require ROOT_FOLDER .  "/pages/client/validateProduct.php";
+}elseif ($page == "noValidateProduct"){
+    require ROOT_FOLDER .  "/pages/client/noValidateProduct.php";
 }
-$content = ob_get_clean();
+$content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';

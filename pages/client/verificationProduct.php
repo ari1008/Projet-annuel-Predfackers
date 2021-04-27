@@ -53,7 +53,7 @@ if(empty($_POST["nom"])==false AND empty($_POST["mark"])==false AND empty($_POST
                         <p class="alert alert-warning">Notre prix ' .$value .' </p>
                         <div class="form-action">
                             <button type="submit" class="btn btn-warning"> oui </button>
-                            <a href="" class="btn btn-default">non</a>
+                            <a href="?p=noValidateProduct&id='.$lastid[0] . '" class="btn btn-default">non</a>
                         </div>
                     </div>
                 </form>

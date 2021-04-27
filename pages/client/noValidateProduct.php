@@ -10,17 +10,16 @@
         $photo = new Photo();
         $photo->getPdo();
         $nameTab = $photo->viewId($_GET['id']);
-        var_dump($nameTab);
         for($i=0;$i<3;$i++){
-            $dossierSource = ROOT_FOLDER.'/public/pictures/testphoto/' . $nameTab;
+            $dossierSource = ROOT_FOLDER.'/public/pictures/testphoto/' . $nameTab[$i]["name"];
             unlink($dossierSource);
         }
         $product = new Product();
         $photoAll = new Photo();
         $product->getPdo();
         $photoAll->getPdo();
-        $product->delete($_GET['id']);
-        $photoAll->delete($_GET['id']);
+        $product->deleteID($_GET['id']);
+        $photoAll->deleteID($_GET['id']);
 
     }
 
