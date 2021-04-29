@@ -8,8 +8,9 @@
     require_once ROOT_FOLDER . "/fpdf/fpdf.php";
     $output = ROOT_FOLDER . "/public/pdf/test.pdf";
     $pdf = new FPDF();
-    new Filesend($pdf, $output);
-    new Mail($output);
+    $file = new Filesend($pdf, $output, 1, 9 , 1);
+    $file->table();
+    #new Mail($output);
     ob_start();
 
 

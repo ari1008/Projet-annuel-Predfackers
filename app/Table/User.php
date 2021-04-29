@@ -21,5 +21,14 @@ class User extends Database{
         return $user;
     }
 
+    public function selectNameLast($id_user){
+        $q = "SELECT last_name, first_name FROM USER WHERE  id_user=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_user]);
+        $user = $stmt->fetch();
+        return $user;
+
+    }
+
 }
 
