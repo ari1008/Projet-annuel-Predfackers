@@ -27,7 +27,14 @@ class User extends Database{
         $stmt->execute([$id_user]);
         $user = $stmt->fetch();
         return $user;
+    }
 
+    public function selectNameEmail($id_user){
+        $q = "SELECT last_name, first_name, email FROM USER WHERE  id_user=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_user]);
+        $user = $stmt->fetch();
+        return $user;
     }
 
 }

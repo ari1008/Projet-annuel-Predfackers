@@ -8,57 +8,72 @@ require ROOT_FOLDER.'/PHPMailer/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use APP\Table\User;
 class Mail{
     private $mail;
     private $outputFile;
-    private $name;
+    private $firstName;
+    private $lastName;
+    private $phpmail;
 
-    public function __construct($mail,$outputFile, $name){
-        $this->mail = $mail;
+    public function __construct($outputFile, $id_user){
         $this->outputFile= $outputFile;
-        $this->name=$name;
+        $this->phpmail = new PHPMailer(true);
+        $this->name($id_user);
 
 
     }
 
         public function sendPdf(){
-            $mail = new PHPMailer(true);
-
             try {
                 //Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                $mail->isSMTP(2);                                            //Send using SMTP
-                $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-                $mail->Username = 'predfackers@gmail.com';                     //SMTP username
-                $mail->Password = '';                               //SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-                $mail->Port = 587;         //465 or 587                   //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+                $this->phpmail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $this->phpmail->isSMTP(2);                                            //Send using SMTP
+                $this->phpmail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $this->phpmail->SMTPAuth = true;                                   //Enable SMTP authentication
+                $this->phpmail->Username = 'predfackers@gmail.com';                     //SMTP username
+                $this->phpmail->Password = 'EgdOYCNeLQHONH0';                               //SMTP password
+                $this->phpmail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $this->phpmail->Port = 587;         //465 or 587                   //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
                 //Recipients
-                $mail->setFrom('predfackers@gmail.com', 'Predfackers');
-                $mail->addAddress($this->mail, $this->name);     //Add a recipient
-                //$mail->addAddress('ellen@example.com');               //Name is optional
-                //$mail->addReplyTo('info@example.com', 'Information');
-                //$mail->addCC('cc@example.com');
-                //$mail->addBCC('bcc@example.com');
+                $this->phpmail->setFrom('predfackers@gmail.com', 'Predfackers');
+                $name =" {$this->lastName}  {$this->firstName}";
+                $this->phpmail->addAddress($this->mail,$name );     //Add a recipient
 
                 //Attachments
-                $mail->addAttachment($this->outputFile);         //Add attachments
-                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+                var_dump($this->outputFile);
+                $this->phpmail->addAttachment($this->outputFile);         //Add attachments
 
                 //Content
-                $mail->isHTML(true);                                  //Set email format to HTML
-                $mail->Subject = 'Here is the subject';
-                $mail->Body = 'This is the HTML message body <b>in bold!</b>';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                $this->Content();
 
-                $mail->send();
+                $this->phpmail->send();
                 echo 'Message has been sent';
+                unlink($this->outputFile);
             } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                echo "Message could not be sent. Mailer Error: {$this->phpmail->ErrorInfo}";
             }
 
+        }
+
+        public function Content(){
+            $this->phpmail->Subject = 'Bon colisimo pour Predfackers';
+            $this->phpmail->Body = "Bonjour  {$this->lastName} {$this->firstName} 
+            Nous vous remercions pour votre démarche sur notre site PredFacker's.
+            Vous trouverez ci-joint votre bon Collisimo pour nous envoyer votre colis.
+            Cordialement";
+            $this->phpmail->isHTML(true);
+            $this->phpmail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        }
+
+        public function name($id_user){
+            $user = new User();
+            $user->getPdo();
+            $result = $user->selectNameEmail($id_user);
+            $this->firstName = $result["first_name"];
+            $this->lastName = $result["last_name"];
+            $this->mail = $result["email"];
         }
 
 
