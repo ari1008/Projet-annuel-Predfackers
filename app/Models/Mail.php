@@ -32,7 +32,7 @@ class Mail{
                 $this->phpmail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
                 $this->phpmail->SMTPAuth = true;                                   //Enable SMTP authentication
                 $this->phpmail->Username = 'predfackers@gmail.com';                     //SMTP username
-                $this->phpmail->Password = 'EgdOYCNeLQHONH0';                               //SMTP password
+                $this->phpmail->Password = '';                               //SMTP password
                 $this->phpmail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
                 $this->phpmail->Port = 587;         //465 or 587                   //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
