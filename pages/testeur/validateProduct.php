@@ -1,11 +1,13 @@
 <?php
-use APP\Table\CaculatedPrice;
-$calulated =  new CaculatedPrice();
-$calulated->getPdo();
-$results = $calulated->viewCaculatedPriceAll();
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+use APP\Table\Product;
+$product =  new Product();
+$product->getPdo();
+$results = $product->viewProductNonValidate();
 
 ?>
-<a href="?p=productAdd" class="btn btn-primary btn-lg"  role="button" ><?php echo gettext("Ajoutez des Produits");?></a>
+<a href="?p=categoryAdd" class="btn btn-primary btn-lg"  role="button" ><?php echo gettext("Ajoutez des categories");?></a>
 <div class="container overflow-hidden">
     <table class="table table-striped table-bordered">
         <thead>
@@ -32,13 +34,11 @@ $results = $calulated->viewCaculatedPriceAll();
                     <?php	echo '<a href="?p=viewProduct&product=' . $value['id'] . ' " class="btn btn-defauft"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>'
                     ?>
 
-                    <?php	echo '<a href="?p=deleteProduct&product=' . $value['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>'
-                    ?>
                 </td>
             </tr>
         <?php } ?>
     </table>
     <?php if($results == null){
-        echo gettext("Il n'y a pas encore de produit");
+        echo gettext("Il n'y a pas encore de produit non valider");
     }?>
 </div>

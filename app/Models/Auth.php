@@ -62,6 +62,11 @@ class Auth{
                         $_SESSION['type'] = "1";
                         header('location: client.php');
                         exit();
+                    }else if($test["type"]==2){
+                        $_SESSION['id'] = $test['id_user'];
+                        $_SESSION['type'] = "2";
+                        header('location: testeur.php');
+                        exit();
                     }
              }
          }
