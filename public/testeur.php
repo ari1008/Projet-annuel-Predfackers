@@ -21,6 +21,8 @@ if ($page === 'home') {
     require  ROOT_FOLDER . "/pages/post/deco.php";
 }elseif ($page === "viewProduct"){
     require  ROOT_FOLDER . "/pages/testeur/viewProduct.php";
+}elseif ($page === "form"){
+    require  ROOT_FOLDER . "/pages/testeur/viewProduct.php";
 }
 
 $content = $content . ob_get_clean();

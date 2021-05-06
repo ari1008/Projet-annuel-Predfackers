@@ -26,4 +26,12 @@ class Photo extends Database {
         $stmt->execute([$id]);
     }
 
+    public function viewIdProduct($id){
+        $sql = "SELECT name FROM PHOTO WHERE product=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id]);
+        $photoName = $stmt->fetchAll();
+        return $photoName;
+    }
+
 }
