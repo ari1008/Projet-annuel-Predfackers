@@ -1,19 +1,47 @@
 <?php
-use App\Bootstrap\Form;
-use App\Bootstrap\Carrousel;
-use app\Table\Photo;
+use APP\Bootstrap\Form;
+use \APP\Table\Verification;
+use \APP\Table\Product;
+use APP\Models\Email;
+
+use APP\Models\Emailrefused;
+$verification = new Verification();
+$verification->getPdo();
+$description = gettext("Le prix que vous proposirez");
 $form = new Form();
-$photo = new Photo();
-$photo->getPdo();
-$photoALL = $photo->viewIdProduct($_GET["product"]);
-$carrousel = new Carrousel($photoALL[0], $photoALL[1], $photoALL[2]);
-$carrousel->carrousell();
-?>
-
-<form  method="post" action=?p=verificationCategory enctype="multipart/form-data" class="form-group">
-    <div class="col-3">
-
-
-        <?=$form::button(gettext("Validez"));?>
-    </div>
-</form>
+$validate = gettext("Merci d'avoir validez le produit");
+$bddproduct = new Product();
+$bddproduct->getPdo();
+$value = $bddproduct->productPrice($_GET["product"]);
+echo '<div class="container admin">';
+if($_POST["gridRadios"]=="radio1"){
+    $content =  '
+        <div class="container">
+            <div class="row">
+                <form class="col-md-6 offset-md-3" role="form" action=?p=newPrice  method="POST">
+                    <div>
+                        <p class="alert alert-warning">' . gettext("Prix actuel: " . $value[0] . "€"). '</p>
+                        <div class="form-action">'.
+                                $form::number(gettext("Nouveaux prix"), $description,"price", 9);
+                                $form::hidden("id_product", $_GET["product"]);
+                                $form::button(gettext("Validez")) .
+                        '</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    ';
+}elseif ($_POST["gridRadios"]=="radio0"){
+    echo "validate";
+    $verification->validateOne($_GET["product"],1);
+    $email = new Email($_GET["product"]);
+    $email->Content();
+    $email->sendMail();
+}elseif ($_POST["gridRadios"] == "radio2"){
+    echo "refused";
+    $verification->validateOne($_GET["product"],2);
+    $email = new Emailrefused($_GET["product"]);
+    $email->Content();
+    $email->sendMail();
+}
+echo "</div>";

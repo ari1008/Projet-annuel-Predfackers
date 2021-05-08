@@ -10,15 +10,17 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use APP\Table\User;
 class Mail{
-    private $mail;
+    protected $mail;
     private $outputFile;
-    private $firstName;
-    private $lastName;
-    private $phpmail;
+    protected $firstName;
+    protected $lastName;
+    protected $phpmail;
+    protected $password = "";
 
     public function __construct($outputFile, $id_user){
         $this->outputFile= $outputFile;
         $this->phpmail = new PHPMailer(true);
+        $this->phpmail->CharSet = "UTF-8";
         $this->name($id_user);
 
 
@@ -32,7 +34,7 @@ class Mail{
                 $this->phpmail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
                 $this->phpmail->SMTPAuth = true;                                   //Enable SMTP authentication
                 $this->phpmail->Username = 'predfackers@gmail.com';                     //SMTP username
-                $this->phpmail->Password = '';                               //SMTP password
+                $this->phpmail->Password = $this->password;                               //SMTP password
                 $this->phpmail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
                 $this->phpmail->Port = 587;         //465 or 587                   //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 

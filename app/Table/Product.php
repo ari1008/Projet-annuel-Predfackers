@@ -69,4 +69,19 @@ class Product extends Database{
         return $date;
     }
 
+    public function viewIdUser($id_product){
+        $q = "SELECT userpropose FROM PRODUCT WHERE  id_product=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_product]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
+    public function productPrice($id_product){
+        $q = "SELECT price  FROM PRODUCT WHERE  id_product=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_product]);
+        $price = $stmt->fetch();
+        return $price;
+    }
 }

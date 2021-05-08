@@ -1,17 +1,22 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+
 use APP\Table\Product;
+use \APP\Bootstrap\Form;
+$form = new Form();
 $id = $_GET["product"];
 $product =  new Product();
 $product->getPdo();
 $results = $product->ViewProduct($id);
 $date =$product->addDate($id);
-
+$description = gettext("Le produit est il conforme");
+$tabForm = [
+        0=> ["radio0","radio0","Validez"],
+        1=> ["radio1","radio1","Non Valide"],
+        2=> ["radio1","radio2","Refusé"]
+];
 
 
 ?>
-<h1 class="titre">Produit</h1>
 <div class="container admin">
     <div class="row">
         <div class="col-md-6">
@@ -40,11 +45,12 @@ $date =$product->addDate($id);
 
 
             </form>
-            <div class="form-action">
-                <a href="?p=home" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Retour </a>
-                <?php echo '<a href="?p=form&product=' . $id . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Formulaire</a>'
-                ?>
-            </div>
+            <?= '<form  method="post" action=?p=form&product='.$id.' class="form-group">';?>
+
+                        <?=$form::radio($tabForm,$description);?>
+                        <?=$form::button(gettext("Validez"));?>
+
+            </form>
         </div>
 
     </div>

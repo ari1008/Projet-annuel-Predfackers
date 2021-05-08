@@ -81,7 +81,6 @@ class Form{
         $length = count($tabName);
         $contentForm = '<select class="form-select" aria-label="Default select example" name="'.$id.'">
                             <option selected>'. $description . '</option>';
-        #var_dump($tabName);
         foreach ($tabName as $key => $value){
            $contentForm = $contentForm . ' <option value="'.$value["id"].'">'.$value["name"].'</option>';
         }
@@ -95,5 +94,25 @@ class Form{
                             <input type="text" class="form-control" id="validationCustom01"  name="'.$id.'" value="'.$name.'" required>
                         </div>';
         return $contentForm;
+    }
+
+    public static function radio($tabName, $name){
+        $content = '  <legend class="col-form-label col-sm-2 pt-0">'.$name .'</legend>
+                      <div class="col-sm-10">';
+        foreach ($tabName as $key => $value){
+            $content = $content . '<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="'.$value[1].'" value="'.$value[1].'" >
+                                        <label class="form-check-label" for="'.$value[1].'">
+                                       '.$value[2].'
+                                        </label>
+                                    </div>';
+        }
+        echo $content;
+
+    }
+
+    public static function hidden($name, $value){
+        $content = '<input id="prodId" name="'.$name.'" type="hidden" value="'.$value.'">';
+        echo $content;
     }
 }

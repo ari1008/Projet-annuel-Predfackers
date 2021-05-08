@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 use APP\Autoloader;
 session_start();
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
@@ -22,7 +24,9 @@ if ($page === 'home') {
 }elseif ($page === "viewProduct"){
     require  ROOT_FOLDER . "/pages/testeur/viewProduct.php";
 }elseif ($page === "form"){
-    require  ROOT_FOLDER . "/pages/testeur/viewProduct.php";
+    require  ROOT_FOLDER . "/pages/testeur/form.php";
+}elseif ($page === "newPrice"){
+    require  ROOT_FOLDER . "/pages/testeur/newPrice.php";
 }
 
 $content = $content . ob_get_clean();

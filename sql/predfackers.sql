@@ -2,17 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< Updated upstream
--- Host: localhost:8889
--- Generation Time: Apr 07, 2021 at 08:41 PM
--- Server version: 5.7.32
--- PHP Version: 7.4.12
-=======
 -- Hôte : db
--- Généré le : lun. 12 avr. 2021 à 20:23
+-- Généré le : sam. 08 mai 2021 à 14:49
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.15
->>>>>>> Stashed changes
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,6 +56,13 @@ CREATE TABLE `ADDRESS` (
   `validate` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `ADDRESS`
+--
+
+INSERT INTO `ADDRESS` (`id_address`, `user`, `number`, `street`, `city`, `postal_code`, `district`, `region`, `country`, `validate`) VALUES
+(1, 9, 1, ' Place d\'Armes', 'Versailles', 78000, 'Notre-Dame', 'Île-de-France', 'France', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -81,18 +81,6 @@ CREATE TABLE `ASSOCIATION` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `BUY`
---
-
-CREATE TABLE `BUY` (
-  `id_buy` int NOT NULL,
-  `user` int NOT NULL,
-  `product` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `CALCULATEDPRICE`
 --
 
@@ -106,11 +94,7 @@ CREATE TABLE `CALCULATEDPRICE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-<<<<<<< Updated upstream
--- Dumping data for table `CALCULATEDPRICE`
-=======
 -- Déchargement des données de la table `CALCULATEDPRICE`
->>>>>>> Stashed changes
 --
 
 INSERT INTO `CALCULATEDPRICE` (`id_calculatedprice`, `category`, `name`, `mark`, `price`, `photo`) VALUES
@@ -183,10 +167,7 @@ INSERT INTO `MARK` (`id_mark`, `name`, `photo`) VALUES
 (9, 'Sony', 'iconsony.png'),
 (10, 'Sony Ericsson', 'iconsonyericsson.png'),
 (11, 'Vivo', 'iconvivo.png'),
-(12, 'Xiaomi', 'iconxiaomi.png'),
-(13, 'Herman Miller', 'Herman-Miller.jpg'),
-(14, 'Noblechairs', 'Logo-Noblechairs.svg'),
-(15, 'Quersus', 'quersuslogo.png');
+(12, 'Xiaomi', 'iconxiaomi.png');
 
 -- --------------------------------------------------------
 
@@ -213,8 +194,7 @@ CREATE TABLE `PAYMENT` (
 CREATE TABLE `PHOTO` (
   `id_photo` int NOT NULL,
   `product` int NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `path` varchar(200) NOT NULL
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -228,6 +208,8 @@ CREATE TABLE `PRODUCT` (
   `category` int NOT NULL,
   `warehouse` int DEFAULT NULL,
   `name` varchar(50) NOT NULL,
+  `userpropose` int DEFAULT NULL,
+  `userbuyer` int DEFAULT NULL,
   `description` varchar(400) NOT NULL,
   `price` int NOT NULL,
   `mark` int NOT NULL,
@@ -241,8 +223,8 @@ CREATE TABLE `PRODUCT` (
 -- Déchargement des données de la table `PRODUCT`
 --
 
-INSERT INTO `PRODUCT` (`id_product`, `category`, `warehouse`, `name`, `description`, `price`, `mark`, `date_start`, `date_end`, `state`, `validate`) VALUES
-(1, 2, 1, 'samsung galaxy', 'Très beau produit', 700, 8, NULL, NULL, '1', 1);
+INSERT INTO `PRODUCT` (`id_product`, `category`, `warehouse`, `name`, `userpropose`, `userbuyer`, `description`, `price`, `mark`, `date_start`, `date_end`, `state`, `validate`) VALUES
+(63, 2, NULL, 'test', 9, 10, 'très beau produit', 500, 5, '2021-05-08', NULL, '2', 0);
 
 -- --------------------------------------------------------
 
@@ -257,18 +239,6 @@ CREATE TABLE `PROJECT` (
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `photo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `PROPOSE`
---
-
-CREATE TABLE `PROPOSE` (
-  `id_propose` int NOT NULL,
-  `user` int NOT NULL,
-  `product` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -309,7 +279,9 @@ CREATE TABLE `USER` (
 
 INSERT INTO `USER` (`id_user`, `photo`, `last_name`, `first_name`, `email`, `username`, `date_birth`, `password`, `language`, `association`, `validate`, `type`) VALUES
 (8, NULL, NULL, NULL, 'aristide.ff@gmail.com', 'ari1008', NULL, '$2y$10$WIw2WSbrUJp1QU7uwC5o7ewKtMikJWVKKAgKgBnB98Ve0EjU8F1xC', NULL, NULL, NULL, '0'),
-(9, NULL, NULL, NULL, 'aristide@gmail.com', 'ari', NULL, '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', NULL, NULL, NULL, '1');
+(9, NULL, 'Fumo', 'Aristide', 'fumo.aristide@gmail.com', 'ari', '2001-07-28', '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', NULL, NULL, NULL, '1'),
+(10, NULL, 'Bongiorno', 'Vivien', 'vivien@test.com', 'vivien100', '2000-05-04', 'test', NULL, NULL, NULL, '1'),
+(11, NULL, 'test', 'test', 'modlaminecraft@gmail.com', 'ari', '2001-05-16', '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', 'français', NULL, 1, '2');
 
 -- --------------------------------------------------------
 
@@ -320,12 +292,8 @@ INSERT INTO `USER` (`id_user`, `photo`, `last_name`, `first_name`, `email`, `use
 CREATE TABLE `VERIFACTION` (
   `id_verification` int NOT NULL,
   `product` int NOT NULL,
-  `date_start` date NOT NULL,
-  `date_end` date NOT NULL,
-  `comment` varchar(400) NOT NULL,
-  `works` tinyint(1) NOT NULL,
-  `price_put` int NOT NULL,
-  `note` int NOT NULL
+  `newprice` int DEFAULT NULL,
+  `validate` tinyint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -337,6 +305,13 @@ CREATE TABLE `VERIFACTION` (
 CREATE TABLE `WAREHOUSE` (
   `id_warehouse` int NOT NULL,
   `name` varchar(50) NOT NULL,
+  `number` int NOT NULL,
+  `street` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `postal_code` int NOT NULL,
+  `district` varchar(50) NOT NULL,
+  `region` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
   `open` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -344,8 +319,9 @@ CREATE TABLE `WAREHOUSE` (
 -- Déchargement des données de la table `WAREHOUSE`
 --
 
-INSERT INTO `WAREHOUSE` (`id_warehouse`, `name`, `open`) VALUES
-(1, 'Paris', 1);
+INSERT INTO `WAREHOUSE` (`id_warehouse`, `name`, `number`, `street`, `city`, `postal_code`, `district`, `region`, `country`, `open`) VALUES
+(1, 'Paris', 242, 'Faubourg Saint-Antoine', 'Paris', 75012, '12', 'Île-de-France', 'France', 1),
+(2, 'Nante', 5, ' boulevard de la Beaujoire', 'Nante', 44300, 'Erdre', 'Loire', 'France', 1);
 
 --
 -- Index pour les tables déchargées
@@ -364,13 +340,6 @@ ALTER TABLE `ACTION`
 ALTER TABLE `ADDRESS`
   ADD PRIMARY KEY (`id_address`),
   ADD KEY `user` (`user`);
-
---
--- Index pour la table `BUY`
---
-ALTER TABLE `BUY`
-  ADD KEY `user` (`user`),
-  ADD KEY `product` (`product`);
 
 --
 -- Index pour la table `CALCULATEDPRICE`
@@ -413,14 +382,9 @@ ALTER TABLE `PRODUCT`
   ADD PRIMARY KEY (`id_product`),
   ADD KEY `warehouse` (`warehouse`),
   ADD KEY `category` (`category`),
-  ADD KEY `mark` (`mark`);
-
---
--- Index pour la table `PROPOSE`
---
-ALTER TABLE `PROPOSE`
-  ADD KEY `user` (`user`),
-  ADD KEY `product` (`product`);
+  ADD KEY `mark` (`mark`),
+  ADD KEY `userpropose` (`userpropose`),
+  ADD KEY `userbuyer` (`userbuyer`);
 
 --
 -- Index pour la table `TOKEN`
@@ -428,6 +392,12 @@ ALTER TABLE `PROPOSE`
 ALTER TABLE `TOKEN`
   ADD PRIMARY KEY (`id_token`),
   ADD KEY `user` (`user`);
+
+--
+-- Index pour la table `USER`
+--
+ALTER TABLE `USER`
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- Index pour la table `VERIFACTION`
@@ -450,17 +420,13 @@ ALTER TABLE `WAREHOUSE`
 -- AUTO_INCREMENT pour la table `ADDRESS`
 --
 ALTER TABLE `ADDRESS`
-  MODIFY `id_address` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_address` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
-<<<<<<< Updated upstream
-  MODIFY `id_calculatedprice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-=======
   MODIFY `id_calculatedprice` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT pour la table `CATEGORY`
@@ -472,11 +438,7 @@ ALTER TABLE `CATEGORY`
 -- AUTO_INCREMENT pour la table `MARK`
 --
 ALTER TABLE `MARK`
-<<<<<<< Updated upstream
-  MODIFY `id_mark` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-=======
   MODIFY `id_mark` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT pour la table `PAYMENT`
@@ -488,19 +450,42 @@ ALTER TABLE `PAYMENT`
 -- AUTO_INCREMENT pour la table `PHOTO`
 --
 ALTER TABLE `PHOTO`
-  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT pour la table `PRODUCT`
 --
 ALTER TABLE `PRODUCT`
-  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT pour la table `USER`
+--
+ALTER TABLE `USER`
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT pour la table `VERIFACTION`
+--
+ALTER TABLE `VERIFACTION`
+  MODIFY `id_verification` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `WAREHOUSE`
 --
 ALTER TABLE `WAREHOUSE`
-  MODIFY `id_warehouse` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_warehouse` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `PRODUCT`
+--
+ALTER TABLE `PRODUCT`
+  ADD CONSTRAINT `PRODUCT_ibfk_1` FOREIGN KEY (`userpropose`) REFERENCES `USER` (`id_user`),
+  ADD CONSTRAINT `PRODUCT_ibfk_2` FOREIGN KEY (`userbuyer`) REFERENCES `USER` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
