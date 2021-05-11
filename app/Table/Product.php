@@ -62,8 +62,6 @@ class Product extends Database{
 
         $sql = 'UPDATE PRODUCT SET  date_start=? WHERE id_product = ?';
         $date = date("Y-m-d"); //2021-05-06
-
-        var_dump($date);
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([ $date, $id]);
         return $date;
@@ -83,5 +81,17 @@ class Product extends Database{
         $stmt->execute([$id_product]);
         $price = $stmt->fetch();
         return $price;
+    }
+
+    public function productNewPrice($id_user){
+            $sql = "SELECT id_verification AS id, PRODUCT.name AS name, CATEGORY.name AS category, 
+                    MARK.name AS mark, newprice AS price FROM VERIFACTION LEFT JOIN PRODUCT ON  
+                PRODUCT.id_product = VERIFACTION.product LEFT JOIN USER ON USER.id_user = PRODUCT.userpropose 
+                LEFT JOIN MARK ON  MARK.id_mark = PRODUCT.mark  LEFT JOIN CATEGORY ON CATEGORY.id_category = PRODUCT.category
+                WHERE VERIFACTION.validate = 3  AND USER.id_user=?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$id_user]);
+            $product = $stmt->fetchAll();
+            return $product;
     }
 }

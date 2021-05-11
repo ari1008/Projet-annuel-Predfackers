@@ -115,4 +115,13 @@ class Form{
         $content = '<input id="prodId" name="'.$name.'" type="hidden" value="'.$value.'">';
         echo $content;
     }
+
+    public static function date($name,$description, $id ){
+        $content = '<div class="form-group">
+                        <label for="texte" class="col-form-label">' . $name .'</label>
+                        <label for="example-number-input" class="col-2 col-form-label">' . $description .'</label>
+                        <input class="form-control" id="'.$id.'" name="'.$id.'" placeholder="MM/DD/YYY" type="text"/>
+                    </div>';
+        echo $content;
+    }
 }

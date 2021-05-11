@@ -15,7 +15,7 @@ class Mail{
     protected $firstName;
     protected $lastName;
     protected $phpmail;
-    protected $password = "";
+    protected $password = "EgdOYCNeLQHONH0";
 
     public function __construct($outputFile, $id_user){
         $this->outputFile= $outputFile;

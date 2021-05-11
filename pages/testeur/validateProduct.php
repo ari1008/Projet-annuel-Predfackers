@@ -6,7 +6,6 @@ $product->getPdo();
 $results = $product->viewProductNonValidate();
 
 ?>
-<a href="?p=categoryAdd" class="btn btn-primary btn-lg"  role="button" ><?php echo gettext("Ajoutez des categories");?></a>
 <div class="container overflow-hidden">
     <table class="table table-striped table-bordered">
         <thead>
@@ -15,7 +14,7 @@ $results = $product->viewProductNonValidate();
             <th><?php echo gettext("Nom")?></th>
             <th><?php echo gettext("Catégorie")?></th>
             <th><?php echo gettext("Marque")?></th>
-            <th><?php echo gettext("Prix")?></th>
+            <th><?php echo gettext("Nouveaux Prix")?></th>
             <th><?php echo gettext("Action")?></th>
         </tr>
         </thead>
@@ -30,7 +29,7 @@ $results = $product->viewProductNonValidate();
                 <td> <?php echo $value['price'] ?> </td>
 
                 <td width="200">
-                    <?php	echo '<a href="?p=viewProduct&product=' . $value['id'] . ' " class="btn btn-defauft"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>'
+                    <?php	echo '<a href="?p=viewProductOne&product=' . $value['id'] . ' " class="btn btn-defauft"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>'
                     ?>
 
                 </td>

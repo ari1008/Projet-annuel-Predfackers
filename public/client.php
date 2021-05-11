@@ -29,6 +29,16 @@ if ($page === 'home') {
     require ROOT_FOLDER .  "/pages/client/validateProduct.php";
 }elseif ($page == "noValidateProduct"){
     require ROOT_FOLDER .  "/pages/client/noValidateProduct.php";
+}elseif ($page == "viewProductWait"){
+    require ROOT_FOLDER .  "/pages/client/viewProductWait.php";
+}elseif ($page == "viewProductOne"){
+    require ROOT_FOLDER .  "/pages/client/viewProductOne.php";
+}elseif ($page == "viewProductOne"){
+    require ROOT_FOLDER .  "/pages/client/viewProductOne.php";
+}elseif ($page == "payment"){
+    require ROOT_FOLDER .  "/pages/client/payment.php";
+}elseif ($page == "testingPayment"){
+    require ROOT_FOLDER .  "/pages/client/testingPayment.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';

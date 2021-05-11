@@ -70,6 +70,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?p=product">Produit</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?p=viewProductWait">Produit en attente</a>
+                </li>
                 <a class="nav-item">
                     <a class="nav-link" href="?p=deco">Déconnection</a>
                     </li>
