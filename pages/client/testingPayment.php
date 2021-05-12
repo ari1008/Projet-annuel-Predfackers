@@ -1,40 +1,38 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+use \APP\Table\Verification;
+$verification = new Verification();
+$verification->getPdo();
+$payment = $verification->constructPayment($_GET["product"]);
 require_once(ROOT_FOLDER .'/vendor/autoload.php');
-
-\Stripe\Stripe::setApiKey('sk_test_9bT77JdwRJaBD1Mn0YJj1Zb600k6QROR7E');
+\Stripe\Stripe::setApiKey('sk_test_51If93cDjT9p43wh3c6HJydjOAy4d8mJtLd8ZVeZT5JpLWCJ1KuNWuqdyAmqUpeI9U7C8kLzrYoIvB6pofqNL2hLd009CskQBGn');
 
 $session = \Stripe\Checkout\Session::create([
     'payment_method_types' => ['card'],
     'line_items' => [[
-        'name' => 'Aristide',
-        'description' => "beau produit",
+        'name' => $payment["name"],
+        'description' => $payment["description"],
         //'images' => [''],
-        'amount' => 1000,
+        'amount' => 20000,
         'currency' => 'eur',
         'quantity' => 1,
     ]],
-    "client_reference_id" => $_SESSION["id"],
+    "client_reference_id" => "12345",
     'customer_email' => "aristide.ff@gmail.com",
-    'success_url' => 'http://localhost/projetAnuel2020/webPart/shop/payment.php?session_id={CHECKOUT_SESSION_ID}',
-    'cancel_url' => 'http://localhost/projetAnuel2020/webPart/shop/payment.php?session_id={CHECKOUT_SESSION_ID}',
+    'success_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=success&session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=cancel&session_id={CHECKOUT_SESSION_ID}',
+    "metadata"=> ["idUser" => $_SESSION["id"]],
 ]);
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Payer avec stripe</title>
-  </head>
-  <body>
-
-    <center><h3>Vous allez être redirigé vers stripe pour le paiement</h3><br>
-      <button type="button" onclick="buy()">OK</button></center>
+<h3>Vous allez être redirigé vers stripe pour le paiement</h3><br>
+      <button type="button" onclick="buy()">OK</button>
 
   </body>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="jquery.js"></script>
   <script type="text/javascript">
-  var stripe = Stripe("pk_test_2Nm9mC8Kbr9BA2kBP6kOcEhM00yrbTJf1D");
+  var stripe = Stripe("pk_test_51If93cDjT9p43wh3cm09BDATH98cWFgqL4g2fFPyiDoBoGg0q9TjyVEc53XmO4Qg6in68DtSq6Inhflt79an1d9a002kc76yZw");
 
   function buy() {
       stripe.redirectToCheckout({

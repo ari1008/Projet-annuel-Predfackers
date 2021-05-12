@@ -27,9 +27,9 @@ $results = $product->viewProdutNewPrice($_GET["product"]);
             </form>
             <div class="form-action">
                 <a href="?p=user" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Retour </a>
-                <?php echo '<a href="?p=paymentAugmented&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Refuser Renvoie</a>'?>
-                <?php echo '<a href="?p=payment&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Payer</a>'?>
-                <?php echo '<a href="?p=destruction&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Destruction</a>'?>
+                <?php echo '<a href="?p=testingPayment&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Refuser Renvoie</a>'?>
+                <?php echo '<a href="?p=testingPayment&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Payer</a>'?>
+                <?php echo '<a href="?p=testingPayment&product=' . $results['id'] . ' " class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Destruction</a>'?>
             </div>
         </div>
 

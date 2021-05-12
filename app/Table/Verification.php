@@ -28,4 +28,13 @@ class Verification extends  Database{
             return $product;
     }
 
+    public function constructPayment($id_product){
+        $sql = "SELECT PRODUCT.name AS name,PRODUCT.description AS description, VERIFACTION.newprice AS price  FROM VERIFACTION LEFT JOIN PRODUCT 
+            ON PRODUCT.id_product = VERIFACTION.product WHERE VERIFACTION.id_verification = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_product]);
+        $product = $stmt->fetch();
+        return $product;
+    }
+
 }

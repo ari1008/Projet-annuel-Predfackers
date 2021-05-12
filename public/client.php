@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 use APP\Autoloader;
 session_start();
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
@@ -39,6 +41,8 @@ if ($page === 'home') {
     require ROOT_FOLDER .  "/pages/client/payment.php";
 }elseif ($page == "testingPayment"){
     require ROOT_FOLDER .  "/pages/client/testingPayment.php";
+}elseif ($page == "success"){
+    require ROOT_FOLDER . "/pages/client/success.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';
