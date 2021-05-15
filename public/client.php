@@ -25,8 +25,6 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/client/addProduct.php";
 }elseif ($page === 'verificationProduct') {
     require ROOT_FOLDER . "/pages/client/verificationProduct.php";
-}elseif ($page == "card"){
-    require ROOT_FOLDER .  "/pages/client/card.php";
 }elseif ($page == "validateProduct"){
     require ROOT_FOLDER .  "/pages/client/validateProduct.php";
 }elseif ($page == "noValidateProduct"){
@@ -43,6 +41,12 @@ if ($page === 'home') {
     require ROOT_FOLDER .  "/pages/client/testingPayment.php";
 }elseif ($page == "success"){
     require ROOT_FOLDER . "/pages/client/success.php";
+}elseif ($page == "destruction"){
+    require ROOT_FOLDER . "/pages/client/destruction.php";
+}elseif ($page == "cancel"){
+    require ROOT_FOLDER . "/pages/client/cancel.php";
+}elseif ($page == "pdf"){
+    require ROOT_FOLDER . "/pages/client/pdf.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';

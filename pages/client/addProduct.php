@@ -4,6 +4,10 @@ ini_set("display_errors", 1);
 use \APP\Bootstrap\Form;
 use  APP\Table\Category;
 use APP\Table\Mark;
+use APP\Table\Warehouse;
+$warehouse = new Warehouse();
+$warehouse->getPdo();
+$warehouseAll = $warehouse->viewAll();
 $mark = new Mark();
 $mark->getPdo();
 $resultsMark = $mark->markId();
@@ -20,6 +24,14 @@ $resultsState = [
     '2'=>['id'=>"2",'name'=>gettext("Très Bonne condition")],
     '3'=>['id'=>"3",'name'=>gettext("Comme neuf")]
 ];
+$i = 0;
+foreach ($warehouseAll as $value){
+    $resultWarehouse[$i] = [$i,$value[0], $value[1]];
+    $i++;
+}
+
+
+
 ?>
 
 
@@ -35,6 +47,7 @@ $resultsState = [
                 <?=  $product::inputFile(gettext("Photo 1"),$photoDescription,"photo1");?>
                 <?=  $product::inputFile(gettext("Photo 2"),$photoDescription,"photo2");?>
                 <?=  $product::inputFile(gettext("Photo 3"),$photoDescription,"photo3");?>
+                <?= $product::radio($resultWarehouse, gettext("Les entrepots"));?>
                 <?= $product::button(gettext("Ajoutez"));?>
             </div>
         </form>

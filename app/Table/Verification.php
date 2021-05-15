@@ -37,4 +37,10 @@ class Verification extends  Database{
         return $product;
     }
 
+    public function update($id_product, $validate){
+        $sql = "UPDATE VERIFACTION SET validate=? WHERE VERIFACTION.id_verification = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$validate,$id_product]);
+    }
+
 }

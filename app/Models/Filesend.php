@@ -103,6 +103,10 @@ class Filesend{
         return $this->output;
     }
 
+    public function getAddres(){
+
+    }
+
 
 
 

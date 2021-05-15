@@ -4,48 +4,27 @@
 namespace app\Models;
 
 class StripePayment{
-    private $apiKey;
+    private $apiKey="sk_test_51If93cDjT9p43wh3c6HJydjOAy4d8mJtLd8ZVeZT5JpLWCJ1KuNWuqdyAmqUpeI9U7C8kLzrYoIvB6pofqNL2hLd009CskQBGn";
 
-    private $stripeService;
-
-    public function __construct()
+    public function __construct($payment, $id,$url)
     {
-        $this->apiKey = STRIPE_SECRET_KEY;
-        $this->stripeService = new \Stripe\Stripe();
-        $this->stripeService->setVerifySslCerts(false);
-        $this->stripeService->setApiKey($this->apiKey);
-    }
-
-    public function addCustomer($customerDetailsAry)
-    {
-
-        $customer = new Customer();
-
-        $customerDetails = $customer->create($customerDetailsAry);
-
-        return $customerDetails;
-    }
-
-    public function chargeAmountFromCard($cardDetails)
-    {
-        $customerDetailsAry = array(
-            'email' => $cardDetails['email'],
-            'source' => $cardDetails['token']
-        );
-        $customerResult = $this->addCustomer($customerDetailsAry);
-        $charge = new Charge();
-        $cardDetailsAry = array(
-            'customer' => $customerResult->id,
-            'amount' => $cardDetails['amount']*100 ,
-            'currency' => $cardDetails['currency_code'],
-            'description' => $cardDetails['item_name'],
-            'metadata' => array(
-                'order_id' => $cardDetails['item_number']
-            )
-        );
-        $result = $charge->create($cardDetailsAry);
-
-        return $result->jsonSerialize();
+        \Stripe\Stripe::setApiKey('sk_test_51If93cDjT9p43wh3c6HJydjOAy4d8mJtLd8ZVeZT5JpLWCJ1KuNWuqdyAmqUpeI9U7C8kLzrYoIvB6pofqNL2hLd009CskQBGn');
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'name' => $payment["name"],
+                'description' => $payment["description"],
+                //'images' => [''],
+                'amount' => $payment["price"]*100,
+                'currency' => 'eur',
+                'quantity' => 1,
+            ]],
+            "client_reference_id" => "12345",
+            'customer_email' => "aristide.ff@gmail.com",
+            'success_url' => $url[0],
+            'cancel_url' => $url[1],
+            "metadata"=> ["idUser" => $_SESSION["id"]],
+        ]);
     }
 
 }

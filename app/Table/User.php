@@ -37,5 +37,15 @@ class User extends Database{
         return $user;
     }
 
+    public function send($id_user){
+        $q = "SELECT ADDRESS.id_address AS address, PRODUCT.warehouse AS warehouse FROM USER LEFT JOIN 
+            PRODUCT ON PRODUCT.userpropose = USER.id_user LEFT JOIN ADDRESS ON ADDRESS.user = USER.id_user 
+            WHERE USER.id_user=? ";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_user]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
 }
 

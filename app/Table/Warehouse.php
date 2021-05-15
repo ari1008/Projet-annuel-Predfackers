@@ -16,4 +16,11 @@ class Warehouse extends  Database{
         return $result;
     }
 
+    public function viewAll(){
+        $q = "SELECT WAREHOUSE.id_warehouse AS id , WAREHOUSE.name AS name FROM WAREHOUSE";
+        $stmt= $this->pdo->query($q);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
 }
