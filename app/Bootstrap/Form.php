@@ -124,4 +124,15 @@ class Form{
                     </div>';
         echo $content;
     }
+
+    public static function selectJs($tabName,$description,$id, $funcJS ){
+        $length = count($tabName);
+        $contentForm = '<select class="form-select" aria-label="Default select example" id="'.$id. '" name="'.$id.'" onchange="'.$funcJS.'()">
+                            <option selected>'. $description . '</option>';
+        foreach ($tabName as $key => $value){
+            $contentForm = $contentForm . ' <option value="'.$value["id"].'">'.$value["name"].'</option>';
+        }
+        $contentForm = $contentForm .   '</select>';
+        return $contentForm;
+    }
 }

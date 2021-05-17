@@ -26,4 +26,5 @@ class Category extends Database {
         return $category;
     }
 
+
 }

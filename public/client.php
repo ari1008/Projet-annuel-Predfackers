@@ -1,6 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+
 use APP\Autoloader;
 session_start();
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));

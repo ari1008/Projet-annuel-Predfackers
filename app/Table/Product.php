@@ -52,7 +52,6 @@ class Product extends Database{
         AS price, PHOTO.name AS PHOTO FROM `PRODUCT` LEFT JOIN CATEGORY ON PRODUCT.category = CATEGORY.id_category LEFT JOIN 
         MARK ON PRODUCT.mark = MARK.id_mark LEFT JOIN PHOTO ON PRODUCT.id_product = PHOTO.product 
         WHERE validate=0 ORDER BY PRODUCT.id_product =0";
-        $q = "";
         $stmt = $this->pdo->query($sql);
         $product = $stmt->fetchAll();
         return $product;
@@ -93,5 +92,18 @@ class Product extends Database{
             $stmt->execute([$id_user]);
             $product = $stmt->fetchAll();
             return $product;
+    }
+
+    public function productView($id_mark,$id_category){
+        $sql = "SELECT id_verification AS id, PRODUCT.name AS name, newprice AS price,  PRODUCT.description AS description
+                FROM VERIFACTION LEFT JOIN PRODUCT ON  
+                PRODUCT.id_product = VERIFACTION.product LEFT JOIN USER ON USER.id_user = PRODUCT.userpropose 
+                LEFT JOIN MARK ON  MARK.id_mark = PRODUCT.mark  LEFT JOIN CATEGORY ON CATEGORY.id_category = PRODUCT.category
+                WHERE VERIFACTION.validate = 3  AND PRODUCT.category=? AND PRODUCT.mark=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_mark,$id_category]);
+        $product = $stmt->fetchAll();
+        return $product;
+
     }
 }

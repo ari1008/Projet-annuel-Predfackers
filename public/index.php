@@ -24,8 +24,9 @@ if ($page === 'home') {
 }elseif ($page === 'verification'){
     require ROOT_FOLDER . "/pages/post/verification.php";
 }elseif ($page === 'testPdf'){
-
     require ROOT_FOLDER . "/pages/post/testPdf.php";
+}elseif ($page === 'product'){
+    require ROOT_FOLDER . "/pages/post/product.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/default.php';
