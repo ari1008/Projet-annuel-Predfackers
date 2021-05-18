@@ -18,7 +18,7 @@ class Carrousel{
         $this->image3= $image3;
     }
 
-    public function carrousell(){
+    public function carousel(){
         $content = 'div id="carrousell" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

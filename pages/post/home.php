@@ -38,12 +38,12 @@ $resultsCategory = $category->categoryID();
 $product = new Form();
 echo $product::selectJS($resultsCategory,gettext("Catégory"), "category", "view");
 echo $product::selectJS($resultsMark,gettext("Mark"), "mark", "view");
-
 ?>
 
 
 
 <div id="Buy" class="container">
+
 </div>
 
 
