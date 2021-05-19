@@ -3,6 +3,6 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 use \APP\Bootstrap\Card;
 
-$mark = $_GET["mark"]!="mark" ? $_GET["mark"] :  null ;
-$category = $_GET["category"]!="category" ? $_GET["category"] :  null ;
+$mark = $_GET["mark"]!="mark" ? $_GET["mark"] :  3 ;
+$category = $_GET["category"]!="category" ? $_GET["category"] :  2 ;
 $test = new Card($category, $mark);

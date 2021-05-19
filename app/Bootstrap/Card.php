@@ -3,7 +3,7 @@
 
 namespace App\Bootstrap;
 use \APP\Bootstrap\Carrousel;
-use app\Table\Photo;
+use APP\Table\Photo;
 use APP\Table\Product;
 
 /*
@@ -25,15 +25,10 @@ class Card {
     }
     public function multiCard(){
         $count = $this->countProduct();
-        echo $count;
         $product = $this->productClass->prodNewPrice($this->id_category,$this->id_mark);
-        for($i=0;$i<$count;$i=$i++){
             echo '<div class="card-group" style="width: 18rem;">';
-            for($i=0;$i<3;$i++){
-                $this->card($product[$i]);
-            }
+                $this->card($product[0]);
             echo '</div>';
-        }
     }
 
     public function card($product){
@@ -44,7 +39,7 @@ class Card {
                       <h5 class="card-title">'.$product["name"].'</h5>
                       <p class="card-text"><small class="text-muted">'.gettext("Etat: ") . $product["state"].'</small></p>
                       <p class="card-text">'. $product["description"].'</p>
-                      <a href="#" class="btn btn-primary">'.gettext("Prix: ") . $product["price"].'</a>
+                      <a href="#" class="btn btn-primary">'.gettext("Prix: ") . $product["price"]. 'euro</a>
                     </div>
                   </div>';
     }
@@ -80,19 +75,19 @@ class Card {
     public function photo($id_product){
         $photo = new Photo();
         $photo->getPdo();
-        $photo->viewIdProduct($id_product);
+        $photoAll = $photo->viewIdProduct($id_product);
+
         //$photo = "pictures/logo/PredFacker_logo.png";
         for($i=0;$i<3;$i++){
-            $photoAll[$i] = "pictures/product/" . $photo[$i]["photo"];
+            $photoThree[$i] = "pictures/product/" . $photoAll[$i]["name"];
         }
-        return $photoAll;
+        return $photoThree;
     }
 
     public function countProduct(){
         $product = new Product();
         $product->getPdo();
         $count =  $product->prodCountCatMak($this->id_mark,$this->id_category);
-        var_dump($count);
         return $count[0];
     }
 }
