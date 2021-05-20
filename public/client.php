@@ -5,7 +5,10 @@ session_start();
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
 require ROOT_FOLDER . '/app/Autoloader.php';
 Autoloader::register();
-
+/*if($_SESSION["type"]!==1){
+    header('Location: index.php?p=connect');
+    exit();
+}*/
 define('ROOT', dirname(__DIR__));
 if (isset($_GET['p'])) {
     $page = $_GET['p'];

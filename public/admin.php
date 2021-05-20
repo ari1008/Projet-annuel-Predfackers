@@ -5,6 +5,11 @@ use APP\Autoloader;
 define('ROOT_FOLDER', realpath(__DIR__ . '/../'));
 require ROOT_FOLDER . '/app/Autoloader.php';
 Autoloader::register();
+var_dump($_SESSION);
+/*if($_SESSION["type"]!==0){
+    header('Location: index.php?p=connect');
+    exit();
+}*/
 
 define('ROOT', dirname(__DIR__));
 if (isset($_GET['p'])) {

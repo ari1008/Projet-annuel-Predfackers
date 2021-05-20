@@ -14,10 +14,12 @@ class Card {
     private $id_category;
     private $id_mark;
     private $productClass;
+    private $url;
 
-    public function __construct($category, $mark){
+    public function __construct($category, $mark, $url){
         $this->id_category = $category;
         $this->id_mark= $mark;
+        $this->url = $url;
         $this->productClass = new Product();
         $this->productClass->getPdo();
         $this->multiCard();
@@ -25,21 +27,34 @@ class Card {
     }
     public function multiCard(){
         $count = $this->countProduct();
-        $product = $this->productClass->prodNewPrice($this->id_category,$this->id_mark);
-            echo '<div class="card-group" style="width: 18rem;">';
-                $this->card($product[0]);
+        if ($count == 0){
+            echo gettext("il n'y a rien désolé");
+            return 0;
+        }else{
+            $product = $this->productClass->prodNewPrice($this->id_category,$this->id_mark);
+            echo '<div class="card-group" >';
+            $this->card($product[0]);
+            $this->card($product[0]);
+            $this->card($product[0]);
+
             echo '</div>';
+            echo '<div class="card-group" >';
+            $this->card($product[0]);
+            echo '</div>';
+        }
+        return 1;
+
     }
 
     public function card($product){
         $photo = $this->photo($product["id"]);
-        echo '<div class="card" >
+        echo '<div class="card"  style="width: 18rem;">
                     '.$this->carousel($photo[0],$photo[1],$photo[2]).'
                     <div class="card-body">
                       <h5 class="card-title">'.$product["name"].'</h5>
                       <p class="card-text"><small class="text-muted">'.gettext("Etat: ") . $product["state"].'</small></p>
                       <p class="card-text">'. $product["description"].'</p>
-                      <a href="#" class="btn btn-primary">'.gettext("Prix: ") . $product["price"]. 'euro</a>
+                      <a href="'.$this->url.'" class="btn btn-primary">'.gettext("Prix: ") . $product["price"]. 'euro</a>
                     </div>
                   </div>';
     }
