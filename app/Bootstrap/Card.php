@@ -11,10 +11,10 @@ use APP\Table\Product;
  * Le seul problème est le foreach
  */
 class Card {
-    private $id_category;
-    private $id_mark;
-    private $productClass;
-    private $url;
+    protected $id_category;
+    protected $id_mark;
+    protected $productClass;
+    protected $url;
 
     public function __construct($category, $mark, $url){
         $this->id_category = $category;
@@ -32,19 +32,24 @@ class Card {
             return 0;
         }else{
             $product = $this->productClass->prodNewPrice($this->id_category,$this->id_mark);
-            echo '<div class="card-group" >';
-            $this->card($product[0]);
-            $this->card($product[0]);
-            $this->card($product[0]);
 
+            for($i=0;$i<$count;$i++){
+                if ($i%3==0){
+                    echo '</div>';
+                    echo '<div class="card-group" >';
+                    $this->card($product[$i]);
+
+                }else{
+                    $this->card($product[$i]);
+                }
+            }
             echo '</div>';
-            echo '<div class="card-group" >';
-            $this->card($product[0]);
-            echo '</div>';
+
         }
         return 1;
 
     }
+
 
     public function card($product){
         $photo = $this->photo($product["id"]);
@@ -91,8 +96,6 @@ class Card {
         $photo = new Photo();
         $photo->getPdo();
         $photoAll = $photo->viewIdProduct($id_product);
-
-        //$photo = "pictures/logo/PredFacker_logo.png";
         for($i=0;$i<3;$i++){
             $photoThree[$i] = "pictures/product/" . $photoAll[$i]["name"];
         }

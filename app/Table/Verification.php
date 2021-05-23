@@ -42,5 +42,15 @@ class Verification extends  Database{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$validate,$id_product]);
     }
+    public function viewVerificationNewPrice($id_product){
+        $sql = "SELECT id_product AS id, PRODUCT.name AS name, CATEGORY.name AS category, MARK.name AS mark, 
+            newprice AS price, PHOTO.name AS photo, PRODUCT.description AS description FROM VERIFACTION LEFT JOIN PRODUCT ON PRODUCT.id_product = VERIFACTION.product 
+            LEFT JOIN MARK ON MARK.id_mark = PRODUCT.mark LEFT JOIN PHOTO ON PHOTO.product=PRODUCT.id_product
+            LEFT JOIN CATEGORY ON CATEGORY.id_category = PRODUCT.category WHERE PRODUCT.id_product=?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_product]);
+        $product = $stmt->fetch();
+        return $product;
+    }
 
 }

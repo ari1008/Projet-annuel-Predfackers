@@ -105,6 +105,17 @@ class Product extends Database{
 
     }
 
+    public function prodCountCatMakUser($id_mark,$id_category,$id_user){
+        $sql = "SELECT COUNT(VERIFACTION.id_verification ) as count FROM VERIFACTION  
+                LEFT JOIN PRODUCT ON PRODUCT.id_product= VERIFACTION.product
+                WHERE VERIFACTION.validate = 1 AND PRODUCT.mark=?  AND  PRODUCT.category=? AND PRODUCT.userpropose!=? ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_mark,$id_category,$id_user]);
+        $product = $stmt->fetch();
+        return $product;
+
+    }
+
     public function prodNewPrice($id_category,$id_mark){
         $sql = "SELECT id_product AS id, PRODUCT.name AS name, newprice AS price,  PRODUCT.description AS description, 
                 PRODUCT.state AS state FROM VERIFACTION LEFT JOIN PRODUCT ON  
@@ -115,5 +126,18 @@ class Product extends Database{
         $stmt->execute([$id_category,$id_mark]);
         $product = $stmt->fetchAll();
         return $product;
+    }
+
+    public function prodNewPriceUser($id_category,$id_mark,$id_user){
+        $sql = "SELECT id_product AS id, PRODUCT.name AS name, newprice AS price,  PRODUCT.description AS description, 
+                PRODUCT.state AS state FROM VERIFACTION LEFT JOIN PRODUCT ON  
+                PRODUCT.id_product = VERIFACTION.product LEFT JOIN USER ON USER.id_user = PRODUCT.userpropose 
+                LEFT JOIN MARK ON  MARK.id_mark = PRODUCT.mark  LEFT JOIN CATEGORY ON CATEGORY.id_category = PRODUCT.category
+                WHERE VERIFACTION.validate = 1 AND PRODUCT.category=? AND  PRODUCT.mark=? AND PRODUCT.userpropose!=? ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_category,$id_mark,$id_user]);
+        $product = $stmt->fetchAll();
+        return $product;
+
     }
 }

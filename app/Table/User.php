@@ -47,5 +47,14 @@ class User extends Database{
         return $user;
     }
 
+    public function user($id_user){
+        $q = "SELECT id_user AS id, email FROM USER
+            WHERE USER.id_user=? ";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_user]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
 }
 
