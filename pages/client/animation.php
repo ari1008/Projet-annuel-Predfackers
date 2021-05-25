@@ -1,16 +1,4 @@
-<div style="text-align:center">Dirigez - vous ver une porte et Appuyer sur E
-    <p id="info" ></p></div>
-<div id="blocker">
 
-    <div id="instructions">
-        <span style="font-size:36px">Click to play</span>
-        <br /><br />
-        Move: WASD<br/>
-        Jump: SPACE<br/>
-        Look: MOUSE
-    </div>
-
-</div>
 
 <script type="module">
     import * as THREE from   '../../Projet-annuel-Predfackers/threeJS/build/three.module.js';
@@ -543,3 +531,17 @@
     }
 
 </script>
+
+<div style="text-align:center">Dirigez - vous ver une porte et Appuyer sur E
+    <p id="info" ></p></div>
+<div id="blocker">
+
+    <div id="instructions">
+        <span style="font-size:36px">Click to play</span>
+        <br /><br />
+        Move: WASD<br/>
+        Jump: SPACE<br/>
+        Look: MOUSE
+    </div>
+
+</div>
