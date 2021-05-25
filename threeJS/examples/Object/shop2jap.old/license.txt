@@ -1,0 +1,11 @@
+Model Information:
+* title:	Fujiwara Tofu Shop (藤原とうふ店)
+* source:	https://sketchfab.com/3d-models/fujiwara-tofu-shop-4ec756981e134bd1af1a5a1db8e48feb
+* author:	d2epetto (https://sketchfab.com/d2epetto)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Fujiwara Tofu Shop (藤原とうふ店)" (https://sketchfab.com/3d-models/fujiwara-tofu-shop-4ec756981e134bd1af1a5a1db8e48feb) by d2epetto (https://sketchfab.com/d2epetto) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

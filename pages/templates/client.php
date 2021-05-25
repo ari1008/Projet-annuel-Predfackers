@@ -24,6 +24,10 @@
     <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
     <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2:600|Roboto&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
     <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
 
@@ -60,15 +64,11 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Connection
-                    </a>
                 <li class="nav-item">
                     <a class="nav-link" href="?p=addProduct">Ajouter un produit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?p=product">Produit</a>
+                    <a class="nav-link" href="?p=home">Produit</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?p=viewProductWait">Produit en attente</a>

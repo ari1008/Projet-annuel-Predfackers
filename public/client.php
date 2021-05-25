@@ -47,8 +47,10 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/client/destruction.php";
 }elseif ($page == "cancel"){
     require ROOT_FOLDER . "/pages/client/cancel.php";
-}elseif ($page == "pdf"){
+}elseif ($page == "pdf") {
     require ROOT_FOLDER . "/pages/client/pdf.php";
+}elseif ($page == "animation"){
+    require ROOT_FOLDER . "/pages/client/animation.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';

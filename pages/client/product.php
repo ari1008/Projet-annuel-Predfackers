@@ -25,8 +25,8 @@ $session = \Stripe\Checkout\Session::create([
     ]],
     "client_reference_id" => $description["id"],
     'customer_email' => $description["email"],
-    'success_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=success&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
-    'cancel_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=cancel&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
+    'success_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=successProduct&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=cancelProduct&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
     "metadata"=> ["idUser" => $description["id"]],
 ]);
 ?>
