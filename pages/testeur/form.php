@@ -13,6 +13,8 @@ $validate = gettext("Merci d'avoir validez le produit");
 $bddproduct = new Product();
 $bddproduct->getPdo();
 $value = $bddproduct->productPrice($_GET["product"]);
+$product = new Product();
+$value = $bddproduct->productValueOne($_GET["product"]);
 echo '<div class="container admin">';
 if($_POST["gridRadios"]=="radio1"){
     $content =  '
@@ -37,11 +39,16 @@ if($_POST["gridRadios"]=="radio1"){
     $email = new Email($_GET["product"]);
     $email->Content();
     $email->sendMail();
+    header("location: testeur.php");
+    exit(200);
 }elseif ($_POST["gridRadios"] == "radio2"){
     echo "refused";
     $verification->validateOne($_GET["product"],2);
     $email = new Emailrefused($_GET["product"]);
     $email->Content();
     $email->sendMail();
+    header("location: testeur.php");
+    exit(200);
 }
+
 echo "</div>";

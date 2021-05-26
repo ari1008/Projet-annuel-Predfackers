@@ -49,8 +49,8 @@ class Product extends Database{
 
     public function viewProductNonValidate(){
         $sql = "SELECT id_product AS id, PRODUCT.name AS name, CATEGORY.name AS category, MARK.name AS mark, PRODUCT.price 
-        AS price, PHOTO.name AS PHOTO FROM `PRODUCT` LEFT JOIN CATEGORY ON PRODUCT.category = CATEGORY.id_category LEFT JOIN 
-        MARK ON PRODUCT.mark = MARK.id_mark LEFT JOIN PHOTO ON PRODUCT.id_product = PHOTO.product 
+        AS price FROM `PRODUCT` LEFT JOIN CATEGORY ON PRODUCT.category = CATEGORY.id_category LEFT JOIN 
+        MARK ON PRODUCT.mark = MARK.id_mark 
         WHERE validate=0 ORDER BY PRODUCT.id_product =0";
         $stmt = $this->pdo->query($sql);
         $product = $stmt->fetchAll();
@@ -139,5 +139,11 @@ class Product extends Database{
         $product = $stmt->fetchAll();
         return $product;
 
+    }
+
+    public function productValueOne($id_product){
+        $sql = "UPDATE PRODUCT SET validate = '1' WHERE PRODUCT.id_product = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_product]);
     }
 }

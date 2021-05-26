@@ -4,6 +4,7 @@ use APP\Table\Product;
 $product =  new Product();
 $product->getPdo();
 $results = $product->viewProductNonValidate();
+var_dump($results);
 
 ?>
 <div class="container overflow-hidden">
@@ -29,7 +30,7 @@ $results = $product->viewProductNonValidate();
                 <td> <?php echo $value['price'] ?> </td>
 
                 <td width="200">
-                    <?php	echo '<a href="?p=viewProductOne&product=' . $value['id'] . ' " class="btn btn-defauft"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>'
+                    <?php	echo '<a href="?p=viewProduct&product=' . $value['id'] . ' " class="btn btn-defauft"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>'
                     ?>
 
                 </td>
