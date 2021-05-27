@@ -1,5 +1,13 @@
 # This is a basic workflow to help you get started with Actions
-
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 name: CI
 steps:
   - name: Install SSH Key
