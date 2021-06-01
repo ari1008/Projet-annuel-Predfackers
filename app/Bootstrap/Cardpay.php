@@ -30,7 +30,7 @@ class Cardpay extends Card{
                       <h5 class="card-title">'.$product["name"].'</h5>
                       <p class="card-text"><small class="text-muted">'.gettext("Etat: ") . $product["state"].'</small></p>
                       <p class="card-text">'. $product["description"].'</p>
-                      <a href="'.$this->url.'&product='.$product["id"].'" class="btn btn-primary">'.gettext("Prix: ") . $product["price"]. 'euro</a>
+                      <a href="'.$this->url.'&product='.$product["id"].'" class="btn btn-primary">'.gettext("Prix: ") . $product["price"]*1.3. 'euro</a>
                     </div>
                   </div>';
     }

@@ -9,7 +9,6 @@ $description = $user->user($_SESSION['id']);
 $verification = new Verification();
 $verification->getPdo();
 $payment = $verification->viewVerificationNewPrice($_GET["product"]);
-var_dump($payment);
 require_once(ROOT_FOLDER .'/vendor/autoload.php');
 \Stripe\Stripe::setApiKey('sk_test_51If93cDjT9p43wh3c6HJydjOAy4d8mJtLd8ZVeZT5JpLWCJ1KuNWuqdyAmqUpeI9U7C8kLzrYoIvB6pofqNL2hLd009CskQBGn');
 
@@ -25,7 +24,7 @@ $session = \Stripe\Checkout\Session::create([
     ]],
     "client_reference_id" => $description["id"],
     'customer_email' => $description["email"],
-    'success_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=successProduct&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
+    'success_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=successProduct&product='.$_GET["product"].'&id='.$_SESSION["id"].'&session_id={CHECKOUT_SESSION_ID}',
     'cancel_url' => 'http://three.local/Projet-annuel-Predfackers/public/client.php?p=cancelProduct&product='.$_GET["product"].'&session_id={CHECKOUT_SESSION_ID}',
     "metadata"=> ["idUser" => $description["id"]],
 ]);

@@ -8,11 +8,11 @@ use APP\Table\Address;
 
 
 class Filesend{
-    private $pdf;
-    private $output;
-    private $id_address;
-    private $id_user;
-    private $id_warehouse;
+    protected $pdf;
+    protected $output;
+    protected $id_address;
+    protected $id_user;
+    protected $id_warehouse;
 
     public function __construct(  FPDF $pdf, $output, $id_address, $id_user, $id_warehouse){
         $output = $output . "Predfacker.pdf";
