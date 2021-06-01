@@ -51,6 +51,8 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/client/pdf.php";
 }elseif ($page == "animation"){
     require ROOT_FOLDER . "/pages/client/animation.php";
+}elseif ($page == "successProduct"){
+    require ROOT_FOLDER . "/pages/client/succesProduct.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/client.php';
