@@ -146,4 +146,13 @@ class Product extends Database{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id_product]);
     }
+
+    public function productBillingPDF($id_product){
+        $sql = "SELECT ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id_product]);
+        $product = $stmt->fetch();
+        return $product;
+
+    }
 }
