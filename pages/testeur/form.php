@@ -7,9 +7,9 @@ use APP\Models\Email;
 use APP\Models\Emailrefused;
 $verification = new Verification();
 $verification->getPdo();
-$description = gettext("Le prix que vous proposirez");
+$description = gettext("Le prix que vous proposeriez");
 $form = new Form();
-$validate = gettext("Merci d'avoir validez le produit");
+$validate = gettext("Merci d'avoir validé le produit");
 $bddproduct = new Product();
 $bddproduct->getPdo();
 $value = $bddproduct->productPrice($_GET["product"]);
@@ -24,7 +24,7 @@ if($_POST["gridRadios"]=="radio1"){
                     <div>
                         <p class="alert alert-warning">' . gettext("Prix actuel: " . $value[0] . "€"). '</p>
                         <div class="form-action">'.
-                                $form::number(gettext("Nouveaux prix"), $description,"price", 9);
+                                $form::number(gettext("Nouveau prix"), $description,"price", 9);
                                 $form::hidden("id_product", $_GET["product"]);
                                 $form::button(gettext("Validez")) .
                         '</div>

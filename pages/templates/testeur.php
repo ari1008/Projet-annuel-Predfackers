@@ -11,21 +11,45 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/jumbotron/">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+
 
     <!--<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <!-- <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180"> -->
+    <!-- <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png"> -->
     <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
     <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <!-- <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico"> -->
     <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
+
+
+    <!-- Onesignal -->
+    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+        OneSignal.init({
+            appId: "ef3f18a1-78c2-4400-abb9-0c25d860d46c",
+            subdomainName:"localhost"/* The label for your site that you added in Site Setup mylabel.os.tc */
+            notifyButton: {
+            enable: true,
+            },
+            welcomeNotification: {
+                "title": "My Custom Title",
+                "message": "Thanks for subscribing!",
+                // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+            }
+        });
+        });
+    </script> -->
 
 
     <style>
@@ -44,10 +68,11 @@
             }
         }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FredPacker's</a>
@@ -73,7 +98,7 @@
         </div>
     </div>
 </nav>
-
+<div class='onesignal-customlink-container'></div>
 <main role="main">
     <div class="container overflow-hidden" >
         <div class="row gy-5">
@@ -87,9 +112,17 @@
 <footer class="container">
     <p>&copy; Company 2017-2019</p>
 </footer>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "ef3f18a1-78c2-4400-abb9-0c25d860d46c",
+    });
+  });
+</script>
 <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-<script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+<!-- <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
 </body>
 </html>
 
