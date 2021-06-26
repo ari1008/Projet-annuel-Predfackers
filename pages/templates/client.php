@@ -31,6 +31,25 @@
     <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
 
+    <!-- Onesignal -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+        OneSignal.init({
+            appId: "ef3f18a1-78c2-4400-abb9-0c25d860d46c",
+            subdomainName:"localhost"/* The label for your site that you added in Site Setup mylabel.os.tc */
+            notifyButton: {
+            enable: true,
+            },
+            welcomeNotification: {
+                "title": "My Custom Title",
+                "message": "Thanks for subscribing!",
+                // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+            }
+        });
+        });
+    </script>
 
     <style>
         .bd-placeholder-img {

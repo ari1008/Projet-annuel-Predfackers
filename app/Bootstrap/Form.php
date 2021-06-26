@@ -7,20 +7,20 @@ class Form{
     public $password;
 
 
-    public static function email($name,$description, $id){
+    public static function email($name,$description, $id, $value = ''){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">'.$name .'</label>
-                            <input type="email" class="form-control" id="email" name="'.$id.'" aria-describedby="emailHelp" placeholder="' . $name . '">
+                            <input type="email" class="form-control" id="email" value="'.$value.'" name="'.$id.'" aria-describedby="emailHelp" placeholder="' . $name . '">
                             <div id="emailHelp" class="form-text">'.$description.'</div>
                         </div>';
         echo $contentForm;
         //return $contentForm;
     }
 
-    public static function password($name,$description,$id){
+    public static function password($name,$description,$id, $value = ''){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">'.$name .'</label>
-                            <input type="password" class="form-control" id="' . $id . '" name="'.$id.'" aria-describedby="emailHelp" placeholder="' . $name . '">
+                            <input type="password" class="form-control" id="' . $id . '" name="'.$id.'" value="'.$value.'" ßaria-describedby="emailHelp" placeholder="' . $name . '">
                             <div id="passwordHelp" class="form-text">'.$description .'</div>
                         </div>';
         echo $contentForm;
@@ -32,10 +32,10 @@ class Form{
         echo $contentForm;
     }
 
-    public static function texte($name,$description,$id){
+    public static function texte($name,$description,$id, $value = ''){
         $contentForm = '<div class="mb-3 align-items-center">
                                 <label for="texte" class="col-form-label">' . $name .'</label>
-                                <input type="texte" id="' . $id .'"  name="'.$id.'" class="form-control" aria-describedby="texteHelpInline" placeholder="' . $name . '">
+                                <input type="texte" id="' . $id .'"  name="'.$id.'" value="'.$value.'" class="form-control" aria-describedby="texteHelpInline" placeholder="' . $name . '">
                                 <span id="texteHelpInline" class="form-text">
                                     ' . $description . '
                                 </span>
@@ -116,11 +116,11 @@ class Form{
         echo $content;
     }
 
-    public static function date($name,$description, $id ){
+    public static function date($name,$description, $id, $value = ''){
         $content = '<div class="form-group">
                         <label for="texte" class="col-form-label">' . $name .'</label>
                         <label for="example-number-input" class="col-2 col-form-label">' . $description .'</label>
-                        <input class="form-control" id="'.$id.'" name="'.$id.'" placeholder="MM/DD/YYY" type="text"/>
+                        <input class="form-control" id="'.$id.'" name="'.$id.'" value="'.$value.'" placeholder="MM/DD/YYY" type="text"/>
                     </div>';
         echo $content;
     }

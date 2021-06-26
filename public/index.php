@@ -21,6 +21,12 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/connect.php";
 }elseif ($page === 'register'){
     require ROOT_FOLDER . "/pages/post/registration.php";
+}elseif ($page === 'list_users'){
+    require ROOT_FOLDER . "/pages/post/list_users.php";
+}elseif ($page === 'editUser'){
+    require ROOT_FOLDER . "/pages/post/editUser.php";
+}elseif ($page === 'deleteUser'){
+    require ROOT_FOLDER . "/pages/post/deleteUser.php";
 }elseif ($page === 'verification'){
     require ROOT_FOLDER . "/pages/post/verification.php";
 }elseif ($page === 'testPdf'){
