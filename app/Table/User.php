@@ -68,9 +68,9 @@ class User extends Database{
     }
 
     public function deleteUser($id_user){
-            $q = "DELETE FROM USER WHERE USER.id_user=? ";
-            $stmt = $this->pdo->prepare($q);
-            return $stmt->execute([$id_user]);
+        $q = "DELETE FROM USER WHERE USER.id_user=? ";
+        $stmt = $this->pdo->prepare($q);
+        return $stmt->execute([$id_user]);
     }
 
 }
