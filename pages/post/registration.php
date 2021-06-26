@@ -12,7 +12,7 @@ $connect = new Form();
 ?>
 <div class="container">
     <div class="row">
-        <form  method="post" action=?p=verification class="col-md-6 offset-md-3">
+        <form  method="post" action=?p=verificationAssociation class="col-md-6 offset-md-3">
             <div class="border px-4 py-3">
                 <?=$connect::texte(gettext("Nom"),$descriptionLastName,"last_name");?>
                 <?=$connect::texte(gettext("Prenom"),$descriptionFirstName,"first_name");?>

@@ -15,7 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `predfackers`
@@ -32,10 +31,10 @@ CREATE TABLE `ACTION` (
   `project` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` text NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -54,7 +53,7 @@ CREATE TABLE `ADDRESS` (
   `region` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
   `validate` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `ADDRESS`
@@ -73,10 +72,10 @@ CREATE TABLE `ASSOCIATION` (
   `id_association` int NOT NULL,
   `photo` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` text  NOT NULL,
   `validate` tinyint(1) NOT NULL,
   `token` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -91,7 +90,7 @@ CREATE TABLE `CALCULATEDPRICE` (
   `mark` int NOT NULL,
   `price` int NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `CALCULATEDPRICE`
@@ -127,7 +126,7 @@ CREATE TABLE `CATEGORY` (
   `id_category` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `CATEGORY`
@@ -152,7 +151,7 @@ CREATE TABLE `MARK` (
   `id_mark` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `MARK`
@@ -183,7 +182,7 @@ CREATE TABLE `PAYMENT` (
   `last_name` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `date_expiration` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -195,7 +194,7 @@ CREATE TABLE `PHOTO` (
   `id_photo` int NOT NULL,
   `product` int NOT NULL,
   `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -217,7 +216,7 @@ CREATE TABLE `PRODUCT` (
   `date_end` date DEFAULT NULL,
   `state` varchar(50) NOT NULL,
   `validate` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `PRODUCT`
@@ -236,9 +235,9 @@ CREATE TABLE `PROJECT` (
   `id_project` int NOT NULL,
   `association` int NOT NULL,
   `name` varchar(100) NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` text  NOT NULL,
   `photo` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -250,7 +249,7 @@ CREATE TABLE `TOKEN` (
   `id_token` int NOT NULL,
   `user` int NOT NULL,
   `number` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -261,17 +260,17 @@ CREATE TABLE `TOKEN` (
 CREATE TABLE `USER` (
   `id_user` int NOT NULL,
   `photo` int DEFAULT NULL,
-  `last_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `first_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `last_name` varchar(50)  DEFAULT NULL,
+  `first_name` varchar(50)  DEFAULT NULL,
   `email` varchar(240) NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `username` varchar(100)  DEFAULT NULL,
   `date_birth` date DEFAULT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `language` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `password` varchar(100)  NOT NULL,
+  `language` varchar(10)  DEFAULT NULL,
   `association` int DEFAULT NULL,
   `validate` tinyint(1) DEFAULT NULL,
-  `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `type` varchar(50)  DEFAULT NULL
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `USER`
@@ -294,7 +293,7 @@ CREATE TABLE `VERIFACTION` (
   `product` int NOT NULL,
   `newprice` int DEFAULT NULL,
   `validate` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -313,7 +312,7 @@ CREATE TABLE `WAREHOUSE` (
   `region` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
   `open` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB ;
 
 --
 -- Déchargement des données de la table `WAREHOUSE`

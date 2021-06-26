@@ -4,20 +4,20 @@ namespace APP;
 use \PDO;
 
 class Database{
-    const PORT = 3306;
-    const HOST = "12.5.0.8";
+    const PORT = 8889;
+    const HOST = "127.0.0.1";
     private $dbname;
     private $db_user;
     private $db_pass;
     public $pdo;
 
-    public function __construct($dbname='predfackers',$db_user='predfackers',$db_pass='predfackers'){
+    public function __construct($dbname='predfackers',$db_user='root',$db_pass='root'){
         $this->dbname=$dbname;
         $this->db_user=$db_user;
         $this->db_pass=$db_pass;
     }
 
-    public function  getPdo(){
+    public function getPdo(){
         if($this->pdo === null){
             $pdo = new PDO('mysql:host=' . self::HOST . ':' . self::PORT . ';dbname='. $this->dbname, ''. $this->db_user .'', '' . $this->db_pass .'' );
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
