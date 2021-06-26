@@ -27,6 +27,8 @@ if ($page === 'home') {
     require ROOT_FOLDER . "/pages/post/testPdf.php";
 }elseif ($page === 'product'){
     require ROOT_FOLDER . "/pages/post/product.php";
+}elseif ($page === "onepush"){
+    require ROOT_FOLDER . "/pages/post/onepush.php";
 }
 $content = $content . ob_get_clean();
 require ROOT_FOLDER . '/pages/templates/default.php';

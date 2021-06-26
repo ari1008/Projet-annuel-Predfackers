@@ -1,5 +1,9 @@
 <?php
-
+# grace a l'user on récupère l'adresse
+#grâce a l'autre la warehouse
+# et une autre pour le prix et autre
+#ajout d'une image
+# Tout a refactoriser
 
 namespace app\Models;
 
@@ -12,8 +16,9 @@ use APP\Models\Filesend;
 
 class Billsend extends Filesend{
     protected $test;
+    protected  $price;
 
-    public function __construct(FPDF $pdf, $output, $id_user, $id_address=1, $id_warehouse=1 ){
+    public function __construct(FPDF $pdf, $output, $id_user, $id_address=1, $id_warehouse=1){
         $output = $output . "Billing_Fredpacker.pdf";
         $this->output = $output;
         $this->id_user = $id_user;
@@ -25,7 +30,7 @@ class Billsend extends Filesend{
         $this->header();
         $this->content();
         $this->board();
-        $pdf->Output();
+        $pdf->Output($this->output, 'F');
     }
 
     public function write($html){

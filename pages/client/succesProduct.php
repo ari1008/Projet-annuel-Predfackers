@@ -1,6 +1,7 @@
 
 <div class="container">
     <?php
+    use APP\Models\Emailpay;
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
     use APP\Models\Billsend;
@@ -9,8 +10,13 @@
     $output = ROOT_FOLDER . "/public/pdf/";
     $pdf = new FPDF();
     $billing = new Billsend($pdf, $output, $_GET["id"]);
+
+    $mail = new Emailpay($output ."Billing_Fredpacker.pdf" ,$_GET["id"]);
+    $mail->Content();
+    $mail->sendPdf();
+    var_dump($_GET["id"]);
     ob_end_flush();
-    ob_start();
+    $content = $content . ob_start();
     ?>
 </div>
 <?php
