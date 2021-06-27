@@ -7,6 +7,13 @@ class Form{
     public $password;
 
 
+    /*
+     * fonction qui nous permet d'afficher l'input de l'email sans avoir a le réecrire a chaque fois
+     * $name = string
+     * $description string
+     * $id = string
+     * $value = null or string
+     */
     public static function email($name,$description, $id, $value = ''){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">'.$name .'</label>
@@ -17,6 +24,9 @@ class Form{
         //return $contentForm;
     }
 
+    /*
+     * function qui nous permet d'afficher l'input du password
+     */
     public static function password($name,$description,$id, $value = ''){
         $contentForm = '<div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">'.$name .'</label>
@@ -27,6 +37,9 @@ class Form{
 
     }
 
+    /*
+     * function avec pour l'affichage du button
+     */
     public static  function button($name){
         $contentForm = '  <button type="submit" class="btn btn-primary">' . $name . '</button>';
         echo $contentForm;
@@ -96,6 +109,7 @@ class Form{
         return $contentForm;
     }
 
+
     public static function radio($tabName, $name){
         $content = '  <legend class="col-form-label col-sm-2 pt-0">'.$name .'</legend>
                       <div class="col-sm-10">';
@@ -111,6 +125,9 @@ class Form{
 
     }
 
+    /*
+     * function pour l'affichage de chose cacher
+     */
     public static function hidden($name, $value){
         $content = '<input id="prodId" name="'.$name.'" type="hidden" value="'.$value.'">';
         echo $content;
@@ -125,6 +142,9 @@ class Form{
         echo $content;
     }
 
+    /*
+     * function pour l'affichage d'une selection avec du js pour pouvoir faire de l'ajax
+     */
     public static function selectJs($tabName,$description,$id, $funcJS ){
         $length = count($tabName);
         $contentForm = '<select class="form-select" aria-label="Default select example" id="'.$id. '" name="'.$id.'" onchange="'.$funcJS.'()">

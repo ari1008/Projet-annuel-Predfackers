@@ -148,7 +148,11 @@ class Product extends Database{
     }
 
     public function productBillingPDF($id_product){
-        $sql = "SELECT ";
+        $sql = "SELECT PRODUCT.name AS name, CATEGORY.name AS category, MARK.name AS mark, 
+        WAREHOUSE.name AS warehouse , VERIFACTION.newprice AS price FROM PRODUCT 
+        LEFT JOIN CATEGORY ON PRODUCT.category =CATEGORY.id_category 
+        LEFT JOIN MARK ON PRODUCT.mark = MARK.id_mark  LEFT JOIN WAREHOUSE ON PRODUCT.warehouse = WAREHOUSE.id_warehouse 
+        LEFT JOIN VERIFACTION ON PRODUCT.id_product = VERIFACTION.product WHERE PRODUCT.id_product = ?  ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id_product]);
         $product = $stmt->fetch();

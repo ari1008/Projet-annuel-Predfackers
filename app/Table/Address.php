@@ -11,8 +11,18 @@ class Address extends  Database{
        postal_code, district, region, country FROM ADDRESS WHERE id_address=? AND user=?";
         $stmt = $this->pdo->prepare($q);
         $stmt->execute([$id_address,$id_user ]);
-        $calculatedPrice = $stmt->fetch();
-        return $calculatedPrice;
+        $address = $stmt->fetch();
+        return $address;
+    }
+
+    public function idUser($id_user){
+        $q = "SELECT   number, street, city, 
+       postal_code, district, region, country FROM ADDRESS WHERE  user=?";
+        $stmt = $this->pdo->prepare($q);
+        $stmt->execute([$id_user ]);
+        $address = $stmt->fetch();
+        return $address;
+
     }
 
 

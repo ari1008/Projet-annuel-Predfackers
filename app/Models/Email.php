@@ -10,7 +10,10 @@ use PHPMailer\PHPMailer\Exception;
 use APP\Table\User;
 use APP\Models\Mail;
 class Email extends Mail{
-
+ /*
+  * Cette fonction nous permet d'envoyer des mails
+  * avec des pieces jointe
+  */
     public function __construct($id_product){
         $this->phpmail = new PHPMailer(true);
         $this->phpmail->CharSet = "UTF-8";
@@ -48,9 +51,9 @@ class Email extends Mail{
 
     public function Content()
     {
-        $this->phpmail->Subject ="Votre produit a été acceptè";
-        $this->phpmail->Body = "Bonjour  {$this->lastName} {$this->firstName} 
-            Nous vous remercions pour votre démarche sur notre site PredFacker's.";
+        $this->phpmail->Subject =utf8_decode(gettext("Votre produit a été acceptè"));
+        $this->phpmail->Body = utf8_decode(gettext("Bonjour ")) . " {$this->lastName} {$this->firstName} " .utf8_decode(gettext("
+            Nous vous remercions pour votre démarche sur notre site PredFacker's."));
         $this->phpmail->isHTML(true);
         $this->phpmail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     }
