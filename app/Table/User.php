@@ -73,5 +73,11 @@ class User extends Database{
         return $stmt->execute([$id_user]);
     }
 
+    public function createUser($last_name, $first_name, $email, $username, $date_birth, $password) {
+        $q = "INSERT INTO USER (last_name, first_name, email, username, date_birth, password) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->pdo->prepare($q);
+        return $stmt->execute([$last_name, $first_name, $email, $username, $date_birth, $password]);
+
+    }
 }
 

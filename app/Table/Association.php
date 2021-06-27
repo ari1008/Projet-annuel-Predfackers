@@ -65,13 +65,10 @@ class Association extends Database{
         return $stmt->execute([$id_association]);
     }
 
-    public function updateAssociation($id_association, $photo, $name, $description) {
-        $q = "UPDATE ASSOCIATION set photo=?, name=?, description=? WHERE ASSOCIATION.id_association=?";
+    public function createAssociation($name, $photo, $description) {
+        $q = "INSERT INTO ASSOCIATION (name, photo, description, validate) VALUES (?, ?, ?, 1)";
         $stmt = $this->pdo->prepare($q);
-        return $stmt->execute([$photo, $name, $description, $id_association]);
-    }
+        return $stmt->execute([$name, $photo, $description]);
 
-    public function createAssociation($id_association, $photo, $name, $description, $validate);
-        $q = "INSERT INTO ASSOCIATION "
-INSERT INTO `ASSOCIATION` (`id_association`, `photo`, `name`, `description`, `validate`, `token`) VALUES ('44', 'coucou', 'coucou', 'coucou', '1', '1');
+    }
 }

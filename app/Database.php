@@ -26,7 +26,7 @@ class Database{
         return $this->pdo;
     }
 
-    public function  insert($table, $tab){
+    public function insert($table, $tab){
         $x =0;
         $lenght = count($tab);
         $tabkey =array_keys($tab);

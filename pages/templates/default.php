@@ -103,6 +103,9 @@
                             <a class="nav-link" href="?p=list_associations">Liste des associations</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="?p=list_projects">Liste des projets</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Panier</a>
                         </li>
                         <li class="nav-item">

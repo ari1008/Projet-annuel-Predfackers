@@ -2,21 +2,20 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+use  APP\Table\Association;
 use \APP\Bootstrap\Form;
 
-if (isset($_POST['id_association'])) {
-    $association_table->updateAssociation($_POST['id_association'], $_POST['photo'], $_POST['name'], $_POST['description']);
+$association_table = new Association();
+
+if (isset($_POST['name']) && isset($_POST['photo']) && isset($_POST['description'])) {
+    $association_table->createAssociation($_POST['name'], $_POST['photo'], $_POST['description']);
     header('Location: ?p=list_associations');
 }
 
 $descriptionPhoto = gettext("Votre photo");
 $descriptionName = gettext("Votre nom");
 $descriptionDescription = gettext("Votre description");
-
 $form = new Form();
-
-
 ?>
 <div class="container">
     <div class="row">
@@ -25,7 +24,7 @@ $form = new Form();
                 <?=$form::texte(gettext("Photo"),$descriptionPhoto,"photo");?>
                 <?=$form::texte(gettext("Nom"),$descriptionName,"name");?>
                 <?=$form::texte(gettext("Description"),$descriptionDescription,"description");?>
-                <?= $form::button(gettext("Valider")); ?>
+                <?=$form::button(gettext("Valider")); ?>
             </div>
         </form>
     </div>
