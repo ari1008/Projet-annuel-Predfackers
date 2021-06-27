@@ -26,6 +26,9 @@ class Mail{
 
     }
 
+    /*
+     * Cette fonction vas lancer le mail avec son try catch avec un fichier comme attachement 
+     */
         public function sendPdf(){
             try {
                 //Server settings
@@ -44,7 +47,6 @@ class Mail{
                 $this->phpmail->addAddress($this->mail,$name );     //Add a recipient
 
                 //Attachments
-                var_dump($this->outputFile);
                 $this->phpmail->addAttachment($this->outputFile);         //Add attachments
 
                 //Content
@@ -59,16 +61,21 @@ class Mail{
 
         }
 
+        /*
+         * function qui nous permet d'afficher les données du contenu du mail
+         */
         public function Content(){
-            $this->phpmail->Subject = 'Bon colisimo pour Predfackers';
-            $this->phpmail->Body = "Bonjour  {$this->lastName} {$this->firstName} 
-            Nous vous remercions pour votre démarche sur notre site PredFacker's.
-            Vous trouverez ci-joint votre bon Collisimo pour nous envoyer votre colis.
-            Cordialement";
+            $this->phpmail->Subject = utf8_decode(gettext('Bon colisimo pour Predfackers'));
+            $this->phpmail->Body = utf8_decode(gettext("Bonjour ")) ." {$this->lastName} {$this->firstName}" .
+                utf8_decode(gettext("Nous vous remercions pour votre démarche sur notre site PredFacker's.
+            Vous trouverez ci-joint votre bon Collisimo pour nous envoyer votre colis. Cordialement"));
             $this->phpmail->isHTML(true);
             $this->phpmail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         }
 
+        /*
+         * fonction qui nous permet de récupèrer de la bdd avec les utilisateurs du prénom , nom et de l'email
+         */
         public function name($id_user){
             $user = new User();
             $user->getPdo();

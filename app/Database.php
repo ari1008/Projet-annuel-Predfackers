@@ -2,24 +2,32 @@
 
 namespace APP;
 use \PDO;
-
+/*
+ * Class mère qui vas nous permettre de ce connecter a la base de données
+ */
 class Database{
-    const PORT = 8889;
-    const HOST = "127.0.0.1";
+    const PORT = 3306;
+    const HOST = "12.5.0.8";
     private $dbname;
     private $db_user;
     private $db_pass;
     public $pdo;
 
-    public function __construct($dbname='predfackers',$db_user='root',$db_pass='root'){
+    public function __construct($dbname='predfackers',$db_user='remy',$db_pass='remy'){
         $this->dbname=$dbname;
         $this->db_user=$db_user;
         $this->db_pass=$db_pass;
     }
 
+    /*
+     * function pour ce connecter a la base de données
+     */
     public function getPdo(){
         if($this->pdo === null){
+            #$test = "'mysql:host=' . self::HOST . ':' . self::PORT . ';dbname='. $this->dbname, ''. $this->db_user .'', '' . $this->db_pass .'' ";
+            #var_dump($test);
             $pdo = new PDO('mysql:host=' . self::HOST . ':' . self::PORT . ';dbname='. $this->dbname, ''. $this->db_user .'', '' . $this->db_pass .'' );
+            #$pdo = new PDO($test);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }
@@ -64,6 +72,9 @@ class Database{
         return $result;
     }
 
+    /*
+     * function qui vas nous permettre de selectionner l'utilisateur
+     */
     public function SelectUser($email){
         $q = "SELECT id_user, type, password FROM USER WHERE email=?";
         $stmt = $this->pdo->prepare($q);
@@ -71,6 +82,11 @@ class Database{
         $user = $stmt->fetch();
         return $user;
     }
+
+    /*
+     * function qui vas nous permettre de supprimer des choses dynamiquements
+     * presque pas utiliser
+     */
 
     function Delete($table, $one=0,$where=null){
         require ROOT . '/config/config.php';

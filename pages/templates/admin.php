@@ -82,26 +82,26 @@
                     </ul>
                 </li>
             <li class="nav-item">
-                <a class="nav-link" href="?p=user">Utilisateurs</a>
+                <a class="nav-link" href="?p=user"><?php echo  gettext("Utilisateurs") ;?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?p=category">Catégorie</a>
+                <a class="nav-link" href="?p=category"><?php echo gettext("Catégorie") ;?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?p=product">Produits</a>
+                <a class="nav-link" href="?p=product"><?php echo gettext("Produits") ;?></a>
             </li>
             <li>
                 <a class="nav-item">
-                    <a class="nav-link" href="?p=mark">Marques</a>
+                    <a class="nav-link" href="?p=mark"><?php echo gettext("Marques") ;?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?p=deco">deconnexion</a>
+                <a class="nav-link" href="?p=deco"><?php echo gettext("deconnexion") ;?></a>
             </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pannier</a>
+                    <a class="nav-link" href="#"><?php echo gettext("Pannier"); ?></a>
             <li>
                 <a class="nav-item">
-                    <a class="nav-link" href="#">F A Q</a>
+                    <a class="nav-link" href="#"><?php echo gettext("F A Q");?></a>
                     </li>
 
             </ul>

@@ -18,14 +18,17 @@ class Emailnewprice extends Email{
         $this->price = $price;
     }
 
+    /*
+     * C'est le contenu qui nous permet d'envoyer le contenu dans
+     */
     public function Content()
     {
-        $this->phpmail->Subject ="Votre produit  ne coute pas ce prix";
-        $this->phpmail->Body = "Bonjour  {$this->lastName} {$this->firstName} 
-            Nous vous remercions pour votre démarche sur notre site PredFacker's.\n
+        $this->phpmail->Subject =utf8_decode(gettext("Votre produit  ne coute pas ce prix"));
+        $this->phpmail->Body = utf8_decode(gettext("Bonjour")). "  {$this->lastName} {$this->firstName}" .
+            utf8_decode(gettext("Nous vous remercions pour votre démarche sur notre site PredFacker's.\n
             Mais votre produit ne cout pas autant\n
-            Nous vous proposons {$this->price}. \n
-             <strong> Attention dernière offre</strong>";
+            Nous vous proposons {$this->price}. \n")) ."<strong>".
+             utf8_decode(gettext(" Attention dernière offre")) . "</strong>";
         $this->phpmail->isHTML(true);
         $this->phpmail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     }

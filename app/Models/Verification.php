@@ -2,6 +2,9 @@
 namespace APP\Models;
 class Verification{
 
+    /*
+     * function qui nous permet de vérifier UNE photo
+     */
     public static function file($file, $uploadfile){
         if (isset($file['photo']) AND $file['photo']['error'] == 0)
         {
@@ -47,6 +50,9 @@ class Verification{
         return 0;
     }
 
+    /*
+     * function qui nous permet de voir si les  photos on le bonne taille et ne sont pas de la mauvaise extension
+     */
     public static function filePhotoMulti($file, $uploadfile, $namePhoto){
         if (isset($file[$namePhoto]) AND $file[$namePhoto]['error'] == 0)
         {
@@ -69,6 +75,11 @@ class Verification{
         }
         return 0;
     }
+
+    /*
+     * Cette fonction nous permet de bouger les fichier. Elle prend le fichier regarde si il existe,
+     * Si il existe elle le bouge dans le $dossierDestination
+     */
 
     function moveFile($dossierSource , $dossierDestination){
 

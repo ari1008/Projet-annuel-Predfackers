@@ -3,6 +3,9 @@
 
 namespace app\Models;
 
+/*
+ * Cette fonction nous permet de faire la calcule des prix automatiquement pour proposer un prix
+ */
 
 class CalculPrice{
     public $result;

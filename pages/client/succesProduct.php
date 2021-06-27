@@ -9,7 +9,7 @@
     require_once ROOT_FOLDER . "/fpdf/fpdf.php";
     $output = ROOT_FOLDER . "/public/pdf/";
     $pdf = new FPDF();
-    $billing = new Billsend($pdf, $output, $_GET["id"]);
+    $billing = new Billsend($pdf, $output, $_GET["id"], $_GET["product"]);
 
     $mail = new Emailpay($output ."Billing_Fredpacker.pdf" ,$_GET["id"]);
     $mail->Content();

@@ -73,7 +73,7 @@ class Filesend{
         $warehouseResult = $this->warehouse(new Warehouse());
         $addressResult = $this->setAddressRecipient(new Address()) ;
 
-        $header = array('Expediteur','Destinataire');
+        $header = array(gettext('Expediteur'),gettext('Destinataire'));
         $this->ImprovedTable($header, $addressResult,$warehouseResult);
         $this->pdf->Output($this->output, 'F');
         chmod($this->output, 0777);
@@ -92,8 +92,8 @@ class Filesend{
         // Données
         for($y=0;$y<count($addressResult)/2;$y++)
             {
-                $this->pdf->Cell(60,6,utf8_decode($addressResult[$y]),1);
-                $this->pdf->Cell(60,6,utf8_decode($warehouseResult[$y]),1);
+                $this->pdf->Cell(60,6,utf8_decode(gettext($addressResult[$y])),1);
+                $this->pdf->Cell(60,6,utf8_decode(gettext($warehouseResult[$y])),1);
                 $this->pdf->Ln();
             }
 
@@ -103,9 +103,7 @@ class Filesend{
         return $this->output;
     }
 
-    public function getAddres(){
 
-    }
 
 
 

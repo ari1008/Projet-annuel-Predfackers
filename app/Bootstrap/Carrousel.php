@@ -1,7 +1,9 @@
 <?php
 namespace App\Bootstrap;
 
-
+/*
+ * Class pour faire un carrousel  avec 3 images
+ */
 class Carrousel{
     private $image1;
     private $image2;
@@ -18,6 +20,9 @@ class Carrousel{
         $this->image3= $image3;
     }
 
+    /*
+     * affichage du carrousel
+     */
     public function carousel(){
         $content = 'div id="carrousell" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">

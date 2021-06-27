@@ -9,6 +9,10 @@ use APP\Table\Product;
 
 class Cardpay extends Card{
     public $id_user;
+    /*
+     *  Class qui nous permet de faire les cartes pour l'affichage au moment du payement
+     */
+
 
     public function __construct($category, $mark, $url, $id_user){
         $this->id_category = $category;
@@ -22,6 +26,9 @@ class Cardpay extends Card{
 
     }
 
+    /*
+     * Affichage du de la carte avec le carrousel
+     */
     public function card($product){
         $photo = $this->photo($product["id"]);
         echo '<div class="card"  style="width: 18rem;">
@@ -34,6 +41,10 @@ class Cardpay extends Card{
                     </div>
                   </div>';
     }
+
+    /*
+     * affichage des toute les cartes de façon a bien les ordonné
+     */
 
     public function multiCard(){
         $count = $this->countProduct();
@@ -59,6 +70,9 @@ class Cardpay extends Card{
 
     }
 
+     /*
+      * Fonction qui vas nous permettre d'avoir le nombre de produit par rapport au marque et au catégorie et l'utilisateur
+      */
     public function countProduct(){
         $product = new Product();
         $product->getPdo();

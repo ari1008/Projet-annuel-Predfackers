@@ -25,6 +25,10 @@ class Card {
         $this->multiCard();
 
     }
+
+    /*
+     * Cette fonction permet  d'avoir des plusieurs cartes. Elle va calucler pour les faire 3 par lignes
+     */
     public function multiCard(){
         $count = $this->countProduct();
         if ($count == 0){
@@ -50,7 +54,9 @@ class Card {
 
     }
 
-
+    /*
+     * Création des cartes avec le carrousel et les trois photos.
+     */
     public function card($product){
         $photo = $this->photo($product["id"]);
         echo '<div class="card"  style="width: 18rem;">
@@ -64,6 +70,10 @@ class Card {
                   </div>';
     }
 
+
+    /*
+     * Nous permet d'assembler les 3 photos dans un carrousel
+     */
 
 
     public function carousel($photo, $photo1, $photo2)
@@ -92,6 +102,9 @@ class Card {
         echo $content;
     }
 
+    /*
+     * Ce function nous permet d'avoir les fichiers
+     */
     public function photo($id_product){
         $photo = new Photo();
         $photo->getPdo();
@@ -101,6 +114,11 @@ class Card {
         }
         return $photoThree;
     }
+
+    /*
+     * Fonction qui nous sert qui nous donne le nombre de produit par marques et par catégorie
+     *
+     */
 
     public function countProduct(){
         $product = new Product();

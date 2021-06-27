@@ -81,19 +81,19 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit"><?php echo gettext("Search") ;?></button>
                 </form>
                 <li class="nav-item">
-                    <a class="nav-link" href="?p=addProduct">Ajouter un produit</a>
+                    <a class="nav-link" href="?p=addProduct"><?php echo gettext("Ajouter un produit");?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?p=home">Produit</a>
+                    <a class="nav-link" href="?p=home"><?php echo gettext("Produit");?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?p=viewProductWait">Produit en attente</a>
+                    <a class="nav-link" href="?p=viewProductWait"><?php echo gettext("Produit en attente") ;?></a>
                 </li>
                 <a class="nav-item">
-                    <a class="nav-link" href="?p=deco">Déconnection</a>
+                    <a class="nav-link" href="?p=deco"><?php echo gettext("Déconnection");?></a>
                     </li>
 
             </ul>
