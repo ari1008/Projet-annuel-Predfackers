@@ -22,7 +22,7 @@ class Billsend extends Filesend{
     protected  $price;
     protected $nameProduct;
     protected $warehouse;
-    protected $token;
+    public $token;
 
     public function __construct(FPDF $pdf, $output, $id_user, $idProduct){
         $output = $output . "Billing_Fredpacker.pdf";
@@ -58,14 +58,19 @@ class Billsend extends Filesend{
      */
     public function content(){
         $user = $this->utility(new User());
-
+        $this->pdf->SetFont('Times','',12);
         $this->pdf->Cell(0);
         $this->pdf->SetLeftMargin(10);
         $content = gettext("Facture pour Mr ") . $user[0] . " " . $user[1]  .  gettext(" :");
         $content = $content . gettext("Le nom du produit est ") . $this->nameProduct . gettext(" de la marque ") . $this->mark;
-        $content =$content .  utf8_decode(gettext("La catégorie est ")) . $this->category . gettext(" et l'entrepot ") . $this->warehouse;
-        $content = $content . utf8_decode(gettext("Le prix est  ")) . $this->price . gettext(" et le nombre de token ") . $this->token;
-        $this->pdf->Write(20,$content);
+        $this->pdf->Write(10,$content);
+        $this->pdf->Ln();
+        $content = utf8_decode(gettext("La catégorie est ")) . $this->category . gettext(" et l'entrepot ") . $this->warehouse;
+        $this->pdf->Ln();
+        $this->pdf->Write(10,$content);
+        $content =  utf8_decode(gettext("Le prix est  ")) . $this->price . gettext(" et le nombre de token ") . $this->token;
+        $this->pdf->Ln();
+        $this->pdf->Write(10,$content);
     }
 
     /*
@@ -76,7 +81,7 @@ class Billsend extends Filesend{
         $w = array(60, 60, 60, 60);
         // En-tête
         $header = array(gettext('Adresse'));
-        $this->pdf->SetXY(60, 60);
+        $this->pdf->SetXY(10, 60);
         for($i=0;$i<count($header);$i++)
             $this->pdf->Cell(60,6,$header[$i],1,0,'C');
         $this->pdf->Ln();

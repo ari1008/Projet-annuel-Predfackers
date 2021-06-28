@@ -54,7 +54,7 @@ class Verification extends  Database{
     }
     public function buyProduct($id_product,$id_user){
         $sql = "UPDATE VERIFACTION LEFT JOIN PRODUCT ON PRODUCT.id_product = VERIFACTION.product SET  
-        VERIFACTION.validate=5, PRODUCT.validate=3, PRODUCT.userbuyer=? WHERE VERIFACTION.id_verification = ?";
+        VERIFACTION.validate=5, PRODUCT.validate=5, PRODUCT.userbuyer=? WHERE PRODUCT.id_product= ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id_user,$id_product]);
 

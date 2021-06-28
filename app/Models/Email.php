@@ -24,8 +24,8 @@ class Email extends Mail{
     public function  sendMail(){
         try {
             //Server settings
-            $this->phpmail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $this->phpmail->isSMTP(0);                                            //Send using SMTP
+           # $this->phpmail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $this->phpmail->isSMTP();                                            //Send using SMTP
             $this->phpmail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $this->phpmail->SMTPAuth = true;                                   //Enable SMTP authentication
             $this->phpmail->Username = 'predfackers@gmail.com';                     //SMTP username

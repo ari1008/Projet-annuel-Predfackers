@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : sam. 08 mai 2021 à 14:49
+-- Généré le : lun. 28 juin 2021 à 17:16
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.15
 
@@ -15,6 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `predfackers`
@@ -31,10 +32,10 @@ CREATE TABLE `ACTION` (
   `project` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `description` text NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ CREATE TABLE `ADDRESS` (
   `region` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
   `validate` tinyint(1) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `ADDRESS`
@@ -72,10 +73,10 @@ CREATE TABLE `ASSOCIATION` (
   `id_association` int NOT NULL,
   `photo` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `description` text  NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `validate` tinyint(1) NOT NULL,
   `token` int NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ CREATE TABLE `CALCULATEDPRICE` (
   `mark` int NOT NULL,
   `price` int NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `CALCULATEDPRICE`
@@ -126,7 +127,7 @@ CREATE TABLE `CATEGORY` (
   `id_category` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `CATEGORY`
@@ -151,7 +152,7 @@ CREATE TABLE `MARK` (
   `id_mark` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `MARK`
@@ -171,22 +172,6 @@ INSERT INTO `MARK` (`id_mark`, `name`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `PAYMENT`
---
-
-CREATE TABLE `PAYMENT` (
-  `id_payment` int NOT NULL,
-  `user` int NOT NULL,
-  `card` int NOT NULL,
-  `cryptogram` int NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `date_expiration` date NOT NULL
-) ENGINE=InnoDB ;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `PHOTO`
 --
 
@@ -194,7 +179,22 @@ CREATE TABLE `PHOTO` (
   `id_photo` int NOT NULL,
   `product` int NOT NULL,
   `name` varchar(100) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `PHOTO`
+--
+
+INSERT INTO `PHOTO` (`id_photo`, `product`, `name`) VALUES
+(73, 66, '46java-c++.png'),
+(74, 66, '66index.jpeg'),
+(75, 66, '13index.jpeg'),
+(76, 67, '291619799738035.jpg'),
+(77, 67, '56test.jpg'),
+(78, 67, '82bondecommande.jpg'),
+(79, 68, '34test.jpg'),
+(80, 68, '17effeil.png'),
+(81, 68, '70index.jpeg');
 
 -- --------------------------------------------------------
 
@@ -216,14 +216,16 @@ CREATE TABLE `PRODUCT` (
   `date_end` date DEFAULT NULL,
   `state` varchar(50) NOT NULL,
   `validate` tinyint(1) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `PRODUCT`
 --
 
 INSERT INTO `PRODUCT` (`id_product`, `category`, `warehouse`, `name`, `userpropose`, `userbuyer`, `description`, `price`, `mark`, `date_start`, `date_end`, `state`, `validate`) VALUES
-(63, 2, NULL, 'test', 9, 10, 'très beau produit', 500, 5, '2021-05-08', NULL, '2', 0);
+(66, 2, 1, 'test', 10, 9, 'test test ', 313, 3, NULL, NULL, '1', 5),
+(67, 2, 1, 'swan', 9, NULL, 'bonjour', 296, 3, '2021-05-26', NULL, '0', 1),
+(68, 2, 1, 'iphone', 9, NULL, 'bon produit', 313, 3, NULL, NULL, '1', 0);
 
 -- --------------------------------------------------------
 
@@ -235,9 +237,9 @@ CREATE TABLE `PROJECT` (
   `id_project` int NOT NULL,
   `association` int NOT NULL,
   `name` varchar(100) NOT NULL,
-  `description` text  NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `photo` varchar(200) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,22 @@ CREATE TABLE `TOKEN` (
   `id_token` int NOT NULL,
   `user` int NOT NULL,
   `number` int NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `TOKEN`
+--
+
+INSERT INTO `TOKEN` (`id_token`, `user`, `number`) VALUES
+(1, 9, 6),
+(5, 9, 6),
+(6, 9, 6),
+(7, 9, 6),
+(8, 9, 6),
+(9, 9, 6),
+(10, 9, 6),
+(11, 9, 6),
+(12, 9, 6);
 
 -- --------------------------------------------------------
 
@@ -260,17 +277,17 @@ CREATE TABLE `TOKEN` (
 CREATE TABLE `USER` (
   `id_user` int NOT NULL,
   `photo` int DEFAULT NULL,
-  `last_name` varchar(50)  DEFAULT NULL,
-  `first_name` varchar(50)  DEFAULT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `email` varchar(240) NOT NULL,
-  `username` varchar(100)  DEFAULT NULL,
+  `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `date_birth` date DEFAULT NULL,
-  `password` varchar(100)  NOT NULL,
-  `language` varchar(10)  DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `language` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `association` int DEFAULT NULL,
   `validate` tinyint(1) DEFAULT NULL,
-  `type` varchar(50)  DEFAULT NULL
-) ENGINE=InnoDB ;
+  `type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `USER`
@@ -293,7 +310,15 @@ CREATE TABLE `VERIFACTION` (
   `product` int NOT NULL,
   `newprice` int DEFAULT NULL,
   `validate` tinyint NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `VERIFACTION`
+--
+
+INSERT INTO `VERIFACTION` (`id_verification`, `product`, `newprice`, `validate`) VALUES
+(18, 66, 313, 5),
+(19, 67, 296, 1);
 
 -- --------------------------------------------------------
 
@@ -312,7 +337,7 @@ CREATE TABLE `WAREHOUSE` (
   `region` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
   `open` tinyint(1) NOT NULL
-) ENGINE=InnoDB ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `WAREHOUSE`
@@ -341,6 +366,12 @@ ALTER TABLE `ADDRESS`
   ADD KEY `user` (`user`);
 
 --
+-- Index pour la table `ASSOCIATION`
+--
+ALTER TABLE `ASSOCIATION`
+  ADD PRIMARY KEY (`id_association`);
+
+--
 -- Index pour la table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
@@ -361,13 +392,6 @@ ALTER TABLE `MARK`
   ADD PRIMARY KEY (`id_mark`);
 
 --
--- Index pour la table `PAYMENT`
---
-ALTER TABLE `PAYMENT`
-  ADD PRIMARY KEY (`id_payment`),
-  ADD KEY `user` (`user`);
-
---
 -- Index pour la table `PHOTO`
 --
 ALTER TABLE `PHOTO`
@@ -384,6 +408,13 @@ ALTER TABLE `PRODUCT`
   ADD KEY `mark` (`mark`),
   ADD KEY `userpropose` (`userpropose`),
   ADD KEY `userbuyer` (`userbuyer`);
+
+--
+-- Index pour la table `PROJECT`
+--
+ALTER TABLE `PROJECT`
+  ADD PRIMARY KEY (`id_project`),
+  ADD KEY `association` (`association`);
 
 --
 -- Index pour la table `TOKEN`
@@ -416,6 +447,12 @@ ALTER TABLE `WAREHOUSE`
 --
 
 --
+-- AUTO_INCREMENT pour la table `ACTION`
+--
+ALTER TABLE `ACTION`
+  MODIFY `id_action` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `ADDRESS`
 --
 ALTER TABLE `ADDRESS`
@@ -440,22 +477,22 @@ ALTER TABLE `MARK`
   MODIFY `id_mark` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT pour la table `PAYMENT`
---
-ALTER TABLE `PAYMENT`
-  MODIFY `id_payment` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `PHOTO`
 --
 ALTER TABLE `PHOTO`
-  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT pour la table `PRODUCT`
 --
 ALTER TABLE `PRODUCT`
-  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT pour la table `TOKEN`
+--
+ALTER TABLE `TOKEN`
+  MODIFY `id_token` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `USER`
@@ -467,7 +504,7 @@ ALTER TABLE `USER`
 -- AUTO_INCREMENT pour la table `VERIFACTION`
 --
 ALTER TABLE `VERIFACTION`
-  MODIFY `id_verification` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_verification` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `WAREHOUSE`
@@ -485,6 +522,12 @@ ALTER TABLE `WAREHOUSE`
 ALTER TABLE `PRODUCT`
   ADD CONSTRAINT `PRODUCT_ibfk_1` FOREIGN KEY (`userpropose`) REFERENCES `USER` (`id_user`),
   ADD CONSTRAINT `PRODUCT_ibfk_2` FOREIGN KEY (`userbuyer`) REFERENCES `USER` (`id_user`);
+
+--
+-- Contraintes pour la table `PROJECT`
+--
+ALTER TABLE `PROJECT`
+  ADD CONSTRAINT `PROJECT_ibfk_1` FOREIGN KEY (`association`) REFERENCES `ASSOCIATION` (`id_association`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
