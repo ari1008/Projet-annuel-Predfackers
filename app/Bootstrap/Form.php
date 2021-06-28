@@ -133,11 +133,13 @@ class Form{
         echo $content;
     }
 
-    public static function date($name,$description, $id, $value = ''){
-        $content = '<div class="form-group">
+    public static function date($name, $description, $id, $value = ''){
+        $content = '<div class="mb-3 align-items-center">
                         <label for="texte" class="col-form-label">' . $name .'</label>
-                        <label for="example-number-input" class="col-2 col-form-label">' . $description .'</label>
-                        <input class="form-control" id="'.$id.'" name="'.$id.'" value="'.$value.'" placeholder="MM/DD/YYY" type="text"/>
+                        <input class="form-control" id="'.$id.'" name="'.$id.'" value="'.$value.'" placeholder="MM/DD/YYYY" type="text"/>
+                        <span id="texteHelpInline" class="form-text">
+                                    ' . $description . '
+                        </span>
                     </div>';
         echo $content;
     }
