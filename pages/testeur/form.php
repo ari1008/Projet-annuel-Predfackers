@@ -14,7 +14,7 @@ $bddproduct = new Product();
 $bddproduct->getPdo();
 $value = $bddproduct->productPrice($_GET["product"]);
 $product = new Product();
-$value = $bddproduct->productValueOne($_GET["product"]);
+ $bddproduct->productValueOne($_GET["product"]);
 echo '<div class="container admin">';
 if($_POST["gridRadios"]=="radio1"){
     $content =  '
@@ -22,7 +22,7 @@ if($_POST["gridRadios"]=="radio1"){
             <div class="row">
                 <form class="col-md-6 offset-md-3" role="form" action=?p=newPrice  method="POST">
                     <div>
-                        <p class="alert alert-warning">' . gettext("Prix actuel: " . $value[0] . "€"). '</p>
+                        <p class="alert alert-warning">Prix actuel:  '. $value[0] .' €</p>
                         <div class="form-action">'.
         $form::number(gettext("Nouveau prix"), $description,"price", 9);
     $form::hidden("id_product", $_GET["product"]);

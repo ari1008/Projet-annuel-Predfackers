@@ -8,11 +8,9 @@ use APP\Models\Verification;
 use APP\Models\Filesend;
 use APP\Models\Mail;
 
-if(empty($_POST["nom"])==false AND empty($_POST["mark"])==false AND empty($_POST["categorie"])==false AND isset($_POST["state"])!=false
-    AND empty($_POST["description"])==false ) {
+if(empty($_POST["nom"])==false AND empty($_POST["mark"])==false AND empty($_POST["categorie"])==false AND isset($_POST["state"])!=false AND empty($_POST["description"])==false ) {
     if(empty($_FILES["photo1"])==false AND empty($_FILES["photo2"])==false AND empty($_FILES["photo3"])==false){
         $photo = new Photo();
-        var_dump($_POST);
         $calcule = new CaculatedPrice();
         $calcule->getPdo();
         $mark = $calcule->viewMarkAVG($_POST["mark"]);
@@ -42,7 +40,6 @@ if(empty($_POST["nom"])==false AND empty($_POST["mark"])==false AND empty($_POST
             $uploadfile = ROOT_FOLDER.'/public/pictures/testphoto/' . $name;
             $verificationPhoto = new Verification();
             $test = $verificationPhoto->filePhotoMulti($_FILES,$uploadfile, $namePhoto);
-            echo $test;
             $photo->getPdo();
             $photo->insert($id,$name);
 

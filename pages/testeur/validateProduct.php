@@ -4,7 +4,6 @@ use APP\Table\Product;
 $product =  new Product();
 $product->getPdo();
 $results = $product->viewProductNonValidate();
-var_dump($results);
 
 ?>
 <div class="container overflow-hidden">
