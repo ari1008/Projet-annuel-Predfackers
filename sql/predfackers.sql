@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : lun. 28 juin 2021 à 17:16
+-- Généré le : mar. 29 juin 2021 à 19:56
 -- Version du serveur :  8.0.23
 -- Version de PHP : 7.4.15
 
@@ -75,7 +75,7 @@ CREATE TABLE `ASSOCIATION` (
   `name` varchar(100) NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `validate` tinyint(1) NOT NULL,
-  `token` int NOT NULL
+  `token` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -188,13 +188,7 @@ CREATE TABLE `PHOTO` (
 INSERT INTO `PHOTO` (`id_photo`, `product`, `name`) VALUES
 (73, 66, '46java-c++.png'),
 (74, 66, '66index.jpeg'),
-(75, 66, '13index.jpeg'),
-(76, 67, '291619799738035.jpg'),
-(77, 67, '56test.jpg'),
-(78, 67, '82bondecommande.jpg'),
-(79, 68, '34test.jpg'),
-(80, 68, '17effeil.png'),
-(81, 68, '70index.jpeg');
+(75, 66, '13index.jpeg');
 
 -- --------------------------------------------------------
 
@@ -223,9 +217,7 @@ CREATE TABLE `PRODUCT` (
 --
 
 INSERT INTO `PRODUCT` (`id_product`, `category`, `warehouse`, `name`, `userpropose`, `userbuyer`, `description`, `price`, `mark`, `date_start`, `date_end`, `state`, `validate`) VALUES
-(66, 2, 1, 'test', 10, 9, 'test test ', 313, 3, NULL, NULL, '1', 5),
-(67, 2, 1, 'swan', 9, NULL, 'bonjour', 296, 3, '2021-05-26', NULL, '0', 1),
-(68, 2, 1, 'iphone', 9, NULL, 'bon produit', 313, 3, NULL, NULL, '1', 0);
+(66, 2, 1, 'test', 10, 9, 'test test ', 313, 3, NULL, NULL, '1', 5);
 
 -- --------------------------------------------------------
 
@@ -258,15 +250,7 @@ CREATE TABLE `TOKEN` (
 --
 
 INSERT INTO `TOKEN` (`id_token`, `user`, `number`) VALUES
-(1, 9, 6),
-(5, 9, 6),
-(6, 9, 6),
-(7, 9, 6),
-(8, 9, 6),
-(9, 9, 6),
-(10, 9, 6),
-(11, 9, 6),
-(12, 9, 6);
+(1, 9, 6);
 
 -- --------------------------------------------------------
 
@@ -294,9 +278,9 @@ CREATE TABLE `USER` (
 --
 
 INSERT INTO `USER` (`id_user`, `photo`, `last_name`, `first_name`, `email`, `username`, `date_birth`, `password`, `language`, `association`, `validate`, `type`) VALUES
-(8, NULL, NULL, NULL, 'aristide.ff@gmail.com', 'ari1008', NULL, '$2y$10$WIw2WSbrUJp1QU7uwC5o7ewKtMikJWVKKAgKgBnB98Ve0EjU8F1xC', NULL, NULL, NULL, '0'),
+(8, NULL, 'Fumo', 'remi', 'aristide.ff@gmail.com', 'ari1008', NULL, '$2y$10$WIw2WSbrUJp1QU7uwC5o7ewKtMikJWVKKAgKgBnB98Ve0EjU8F1xC', NULL, NULL, NULL, '0'),
 (9, NULL, 'Fumo', 'Aristide', 'fumo.aristide@gmail.com', 'ari', '2001-07-28', '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', NULL, NULL, NULL, '1'),
-(10, NULL, 'Bongiorno', 'Vivien', 'vivien@test.com', 'vivien100', '2000-05-04', 'test', NULL, NULL, NULL, '1'),
+(10, NULL, 'Bongiorno', 'Vivien', 'bongiorno_vivien@outlook.fr', 'vivien100', '2000-05-04', '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', NULL, NULL, NULL, '1'),
 (11, NULL, 'test', 'test', 'modlaminecraft@gmail.com', 'ari', '2001-05-16', '$2y$10$tKP6GXIAFOPo4GEd8mPW2OPTTMSywKPJxKgnI4yvMTPzCYY9h/hi6', 'français', NULL, 1, '2');
 
 -- --------------------------------------------------------
@@ -317,8 +301,7 @@ CREATE TABLE `VERIFACTION` (
 --
 
 INSERT INTO `VERIFACTION` (`id_verification`, `product`, `newprice`, `validate`) VALUES
-(18, 66, 313, 5),
-(19, 67, 296, 1);
+(18, 66, 313, 5);
 
 -- --------------------------------------------------------
 
@@ -459,6 +442,12 @@ ALTER TABLE `ADDRESS`
   MODIFY `id_address` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT pour la table `ASSOCIATION`
+--
+ALTER TABLE `ASSOCIATION`
+  MODIFY `id_association` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `CALCULATEDPRICE`
 --
 ALTER TABLE `CALCULATEDPRICE`
@@ -480,13 +469,13 @@ ALTER TABLE `MARK`
 -- AUTO_INCREMENT pour la table `PHOTO`
 --
 ALTER TABLE `PHOTO`
-  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_photo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT pour la table `PRODUCT`
 --
 ALTER TABLE `PRODUCT`
-  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_product` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT pour la table `TOKEN`
@@ -504,7 +493,7 @@ ALTER TABLE `USER`
 -- AUTO_INCREMENT pour la table `VERIFACTION`
 --
 ALTER TABLE `VERIFACTION`
-  MODIFY `id_verification` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_verification` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `WAREHOUSE`
@@ -522,12 +511,6 @@ ALTER TABLE `WAREHOUSE`
 ALTER TABLE `PRODUCT`
   ADD CONSTRAINT `PRODUCT_ibfk_1` FOREIGN KEY (`userpropose`) REFERENCES `USER` (`id_user`),
   ADD CONSTRAINT `PRODUCT_ibfk_2` FOREIGN KEY (`userbuyer`) REFERENCES `USER` (`id_user`);
-
---
--- Contraintes pour la table `PROJECT`
---
-ALTER TABLE `PROJECT`
-  ADD CONSTRAINT `PROJECT_ibfk_1` FOREIGN KEY (`association`) REFERENCES `ASSOCIATION` (`id_association`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
